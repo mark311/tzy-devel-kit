@@ -49,3 +49,11 @@
 (require 'highlight-symbol)
 (global-set-key (kbd "<f8>") 'highlight-symbol-at-point)
 
+;; Switch window
+(require 'switch-window)
+(global-set-key (kbd "C-x o") 'switch-window)
+
+;; Zoom window
+(require 'zoom-window)
+(global-set-key (kbd "C-x 9") 'zoom-window-zoom)
+(setq zoom-window-mode-line-color "navy blue")
