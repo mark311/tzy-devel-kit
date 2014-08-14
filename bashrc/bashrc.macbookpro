@@ -1,0 +1,6 @@
+if [ -f ~/.bashrc_common ]; then
+    source ~/.bashrc_common
+fi
+
+export PATH=/usr/local/Cellar/emacs/24.3/bin:$PATH
+export PATH=/usr/local/Cellar/git/2.0.4/bin:$PATH
