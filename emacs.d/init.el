@@ -52,6 +52,7 @@
 ;; Switch window
 (require 'switch-window)
 (global-set-key (kbd "C-x o") 'switch-window)
+(global-set-key (kbd "C-x C-o") 'switch-window)
 
 ;; Zoom window
 (require 'zoom-window)
