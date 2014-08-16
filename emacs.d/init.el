@@ -58,3 +58,10 @@
 (require 'zoom-window)
 (global-set-key (kbd "C-x 9") 'zoom-window-zoom)
 (setq zoom-window-mode-line-color "navy blue")
+
+;; Markdown
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
