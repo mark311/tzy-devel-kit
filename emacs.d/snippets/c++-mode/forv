@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: forv
+# key: forv
+# --
+for (vector<${1:Type}>::iterator ${3:iter} = ${2:arr}.begin(); $3 != $2.end(); ++$3)
+{
+    $0
+}

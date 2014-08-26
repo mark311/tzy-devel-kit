@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: call2
+# key: call2
+# --
+${1:func}(${2:p1}, ${3:p2})
