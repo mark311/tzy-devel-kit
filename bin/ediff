@@ -1,0 +1,1 @@
+emacs --eval "(ediff-files \"$1\" \"$2\")"
