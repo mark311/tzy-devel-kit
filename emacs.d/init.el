@@ -72,3 +72,9 @@
 (define-key yas-minor-mode-map (kbd "<tab>") nil)
 (define-key yas-minor-mode-map (kbd "TAB") nil)
 (define-key yas-minor-mode-map (kbd "M-?") 'yas-expand)
+
+;; Custom Set Variables
+(custom-set-variables
+ ;; Make ediff-* split windows horizontally (left and right)
+ '(ediff-split-window-function (quote split-window-horizontally))
+)
