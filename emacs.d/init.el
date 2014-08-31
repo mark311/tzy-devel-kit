@@ -26,6 +26,9 @@
 )
 (global-set-key (kbd "C-o") 'move-beginning-of-line-and-open-line-and-indent)
 
+;; Don't show welcome buffer
+(setq inhibit-startup-message t)
+
 ;; Gtags/Global
 (autoload 'gtags-mode "gtags" "" t)
 (add-hook 'c-mode-common-hook
