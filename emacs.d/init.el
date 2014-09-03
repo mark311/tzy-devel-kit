@@ -33,6 +33,7 @@
 (add-to-list 'load-path "~/.emacs.d/3rdlib/helm")
 (require 'helm-config)
 (global-set-key (kbd "C-c h") 'helm-mini)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "M-/") 'helm-dabbrev)
 (global-set-key (kbd "M-s o") 'helm-occur)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
