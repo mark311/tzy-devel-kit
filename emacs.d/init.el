@@ -29,19 +29,33 @@
 ;; Don't show welcome buffer
 (setq inhibit-startup-message t)
 
-;; Gtags/Global
-(autoload 'gtags-mode "gtags" "" t)
-(add-hook 'c-mode-common-hook
-   '(lambda ()
-      (gtags-mode 1)
-))
-(add-hook 'gtags-select-mode-hook
-  '(lambda ()
-     (setq hl-line-face 'underline)
-     (hl-line-mode 1)
-))
-(setq gtags-suggested-key-mapping t)
-(setq gtags-auto-update t)
+;; Helm
+(add-to-list 'load-path "~/.emacs.d/3rdlib/helm")
+(require 'helm-config)
+(global-set-key (kbd "C-c h") 'helm-mini)
+(global-set-key (kbd "M-/") 'helm-dabbrev)
+(global-set-key (kbd "M-s o") 'helm-occur)
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+(helm-mode 1)
+
+;; Enable helm-gtags-mode
+(autoload 'helm-gtags-mode "helm-gtags" "" t)
+(add-hook 'c-mode-common-hook 'helm-gtags-mode)
+(setq helm-gtags-auto-update t)
+
+(eval-after-load "helm-gtags"
+  '(progn
+     (define-key helm-gtags-mode-map (kbd "C-]") 'helm-gtags-find-tag-from-here)
+     (define-key helm-gtags-mode-map (kbd "M-.") 'helm-gtags-find-tag)
+     (define-key helm-gtags-mode-map (kbd "C-c s r") 'helm-gtags-find-rtag)
+     (define-key helm-gtags-mode-map (kbd "C-c s s") 'helm-gtags-find-symbol)
+     (define-key helm-gtags-mode-map (kbd "C-c s g") 'helm-gtags-find-pattern)
+     (define-key helm-gtags-mode-map (kbd "C-t") 'helm-gtags-pop-stack)
+     (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
+     (define-key helm-gtags-mode-map (kbd "M-*") 'helm-gtags-show-stack)
+     )
+  )
+
 
 ;; Coding Style
 (setq c-default-style "linux"
