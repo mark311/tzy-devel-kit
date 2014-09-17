@@ -113,4 +113,5 @@
  '(font-lock-builtin-face ((t (:foreground "white"))))
  '(helm-buffer-directory ((t (:background "black" :foreground "brightblue"))))
  '(helm-ff-directory ((t (:background "black" :foreground "brightblue"))))
- '(helm-selection ((t (:background "color-237" :underline t)))))
+ '(helm-selection ((t (:background "color-237" :underline t))))
+ '(region ((t (:background "color-18")))))
