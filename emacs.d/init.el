@@ -34,7 +34,7 @@
 (require 'helm-config)
 (global-set-key (kbd "C-c h") 'helm-mini)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "M-/") 'helm-dabbrev)
+;;(global-set-key (kbd "M-/") 'helm-dabbrev)
 (global-set-key (kbd "M-s o") 'helm-occur)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 (helm-mode 1)
@@ -95,7 +95,11 @@
 (require 'fill-column-indicator)
 (setq fci-rule-width 1)
 (setq fci-rule-color "darkblue")
-(add-hook 'prog-mode-hook 'fci-mode)
+;; FIXME: There is a bug in fci-mode, see:
+;; <https://github.com/alpaker/Fill-Column-Indicator/issues/31>
+;; So don't autoload fci-mode for now.
+;; You can still enable it by M-x fci-mode when needed.
+;;(add-hook 'prog-mode-hook 'fci-mode)
 
 ;; Custom Set Variables
 (custom-set-variables
