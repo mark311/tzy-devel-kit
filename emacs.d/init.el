@@ -91,6 +91,12 @@
 (define-key yas-minor-mode-map (kbd "TAB") nil)
 (define-key yas-minor-mode-map (kbd "M-?") 'yas-expand)
 
+;; Fill column indicator
+(require 'fill-column-indicator)
+(setq fci-rule-width 1)
+(setq fci-rule-color "darkblue")
+(add-hook 'prog-mode-hook 'fci-mode)
+
 ;; Custom Set Variables
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
