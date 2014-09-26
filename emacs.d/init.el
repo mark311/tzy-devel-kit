@@ -29,6 +29,11 @@
 ;; Don't show welcome buffer
 (setq inhibit-startup-message t)
 
+;; Linum mode line number format
+(setq linum-format "%4d  ")
+(require 'linum-off)
+(global-linum-mode)
+
 ;; Helm
 (add-to-list 'load-path "~/.emacs.d/3rdlib/helm")
 (require 'helm-config)
