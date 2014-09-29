@@ -129,4 +129,5 @@
  '(helm-buffer-directory ((t (:background "black" :foreground "brightblue"))))
  '(helm-ff-directory ((t (:background "black" :foreground "brightblue"))))
  '(helm-selection ((t (:background "color-237" :underline t))))
+ '(org-table ((t (:foreground "green"))))
  '(region ((t (:background "color-18")))))
