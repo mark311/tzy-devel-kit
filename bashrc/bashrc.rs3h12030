@@ -11,3 +11,5 @@ ulimit -c unlimited
 
 alias scons=/home/admin/zhiyang.tzy/tmp/toys.git/scons-local/scons.py
 alias tmux=/home/tops/bin/tmux
+alias ls='ls --color'
+alias ll='ls -l'
