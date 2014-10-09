@@ -106,6 +106,18 @@
 ;; You can still enable it by M-x fci-mode when needed.
 ;;(add-hook 'prog-mode-hook 'fci-mode)
 
+
+;; Settings that only for GUI mode
+(if (display-graphic-p)
+    (progn
+      (custom-set-faces
+       ;; set background color in GUI mode, changing from white to black.
+       '(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "default" :family "Monaco")))))
+      ;; set Chinese font, or the when showing Italic Chinese characters, only rectangle block shown
+      (set-fontset-font (frame-parameter nil 'font)
+                        'han
+                        (font-spec :family "Hiragino Sans GB" ))))
+
 ;; Custom Set Variables
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -126,8 +138,8 @@
  '(diff-refine-removed ((t (:inherit diff-refine-change))))
  '(diff-removed ((t (:inherit diff-changed :foreground "red"))))
  '(font-lock-builtin-face ((t (:foreground "white"))))
- '(helm-buffer-directory ((t (:background "black" :foreground "brightblue"))))
- '(helm-ff-directory ((t (:background "black" :foreground "brightblue"))))
- '(helm-selection ((t (:background "color-237" :underline t))))
+ '(helm-buffer-directory ((t (:background "black" :foreground "#5c5cff"))))
+ '(helm-ff-directory ((t (:background "black" :foreground "#5c5cff"))))
+ '(helm-selection ((t (:background "#3a3a3a" :underline t))))
  '(org-table ((t (:foreground "green"))))
- '(region ((t (:background "color-18")))))
+ '(region ((t (:background "#00008e")))))
