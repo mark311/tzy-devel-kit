@@ -70,7 +70,9 @@
 
 ;; Highlight
 (require 'highlight-symbol)
+(global-set-key (kbd "<f7>") 'highlight-symbol-query-replace)
 (global-set-key (kbd "<f8>") 'highlight-symbol-at-point)
+(global-set-key (kbd "<f9>") 'highlight-symbol-nav-mode)
 
 ;; Switch window
 (require 'switch-window)
