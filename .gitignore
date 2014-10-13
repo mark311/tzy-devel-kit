@@ -3,4 +3,5 @@
 *.swp
 .DS_Store
 emacs.d/tramp
+emacs.d/bookmarks
 emacs.d/3rdlib
