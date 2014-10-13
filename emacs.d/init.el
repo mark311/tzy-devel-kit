@@ -29,6 +29,9 @@
 ;; Don't show welcome buffer
 (setq inhibit-startup-message t)
 
+;; Show matching parenthesis
+(show-paren-mode 1)
+
 ;; Linum mode line number format
 (setq linum-format "%4d  ")
 (require 'linum-off)
