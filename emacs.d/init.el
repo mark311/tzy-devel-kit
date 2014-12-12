@@ -44,6 +44,7 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 ;;(global-set-key (kbd "M-/") 'helm-dabbrev)
 (global-set-key (kbd "M-s o") 'helm-occur)
+(global-set-key (kbd "M-s f") 'helm-occur)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 (helm-mode 1)
