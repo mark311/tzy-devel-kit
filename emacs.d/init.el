@@ -26,6 +26,34 @@
 )
 (global-set-key (kbd "C-o") 'move-beginning-of-line-and-open-line-and-indent)
 
+;; TODO still cycling, need go back to last
+(defun goto-last-window()
+  "At anywhere in a line, goto end and indent-return"
+  (interactive)
+  (other-window -1))
+
+;; Cycle to the opposite when reach to the end
+(defun windmove-up-cycle()
+  (interactive)
+  (condition-case nil (windmove-up)
+    (error (condition-case nil (windmove-down)))))
+
+(defun windmove-down-cycle()
+  (interactive)
+  (condition-case nil (windmove-down)
+    (error (condition-case nil (windmove-up)))))
+
+(defun windmove-right-cycle()
+  (interactive)
+  (condition-case nil (windmove-right)
+    (error (condition-case nil (windmove-left)))))
+
+(defun windmove-left-cycle()
+  (interactive)
+  (condition-case nil (windmove-left)
+    (error (condition-case nil (windmove-right)))))
+
+
 ;; Don't show welcome buffer
 (setq inhibit-startup-message t)
 
@@ -45,6 +73,7 @@
 ;;(global-set-key (kbd "M-/") 'helm-dabbrev)
 (global-set-key (kbd "M-s o") 'helm-occur)
 (global-set-key (kbd "M-s f") 'helm-occur)
+(global-set-key (kbd "M-s M-f") 'helm-occur)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 (global-set-key (kbd "C-x b") 'helm-buffers-list)
 (helm-mode 1)
@@ -81,8 +110,12 @@
 
 ;; Switch window
 (require 'switch-window)
-(global-set-key (kbd "C-x o") 'switch-window)
-(global-set-key (kbd "C-x C-o") 'switch-window)
+(global-set-key (kbd "M-g y") 'switch-window)
+(global-set-key (kbd "M-g i") 'goto-last-window)
+(global-set-key (kbd "M-g h") 'windmove-left-cycle)
+(global-set-key (kbd "M-g j") 'windmove-down-cycle)
+(global-set-key (kbd "M-g k") 'windmove-up-cycle)
+(global-set-key (kbd "M-g l") 'windmove-right-cycle)
 
 ;; Zoom window
 (require 'zoom-window)
