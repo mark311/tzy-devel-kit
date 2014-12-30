@@ -116,6 +116,10 @@
 (global-set-key (kbd "M-g j") 'windmove-down-cycle)
 (global-set-key (kbd "M-g k") 'windmove-up-cycle)
 (global-set-key (kbd "M-g l") 'windmove-right-cycle)
+(global-set-key (kbd "M-g M-h") 'windmove-left-cycle)
+(global-set-key (kbd "M-g M-j") 'windmove-down-cycle)
+(global-set-key (kbd "M-g M-k") 'windmove-up-cycle)
+(global-set-key (kbd "M-g M-l") 'windmove-right-cycle)
 
 ;; Zoom window
 (require 'zoom-window)
