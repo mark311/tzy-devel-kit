@@ -150,6 +150,10 @@
 ;; You can still enable it by M-x fci-mode when needed.
 ;;(add-hook 'prog-mode-hook 'fci-mode)
 
+;; This snippet enables lua-mode
+(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+(add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 
 ;; Settings that only for GUI mode
 (if (display-graphic-p)
