@@ -152,6 +152,7 @@
 
 ;; This snippet enables lua-mode
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+(setq lua-indent-level 4)
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 (add-to-list 'interpreter-mode-alist '("lua" . lua-mode))
 
