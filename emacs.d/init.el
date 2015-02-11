@@ -75,7 +75,7 @@
 (global-set-key (kbd "M-s f") 'helm-occur)
 (global-set-key (kbd "M-s M-f") 'helm-occur)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-(global-set-key (kbd "C-x b") 'helm-buffers-list)
+(global-set-key (kbd "C-x b") 'ido-switch-buffer)
 (helm-mode 1)
 
 ;; Enable helm-gtags-mode
