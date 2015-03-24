@@ -92,7 +92,6 @@
      (define-key helm-gtags-mode-map (kbd "C-c s g") 'helm-gtags-find-pattern)
      (define-key helm-gtags-mode-map (kbd "C-t") 'helm-gtags-pop-stack)
      (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack)
-     (define-key helm-gtags-mode-map (kbd "M-*") 'helm-gtags-show-stack)
      )
   )
 
@@ -104,9 +103,8 @@
 
 ;; Highlight
 (require 'highlight-symbol)
-(global-set-key (kbd "<f7>") 'highlight-symbol-query-replace)
-(global-set-key (kbd "<f8>") 'highlight-symbol-at-point)
-(global-set-key (kbd "<f9>") 'highlight-symbol-nav-mode)
+(global-set-key (kbd "M-&") 'highlight-symbol-query-replace)
+(global-set-key (kbd "M-*") 'highlight-symbol-at-point)
 
 ;; Switch window
 (require 'switch-window)
