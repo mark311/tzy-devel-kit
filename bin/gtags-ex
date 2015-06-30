@@ -1,0 +1,16 @@
+#!/bin/sh
+
+CONF=.gtags-ex.conf
+LISTF=GXLIST
+
+if [ ! -f $CONF ]; then
+    echo "error: missing config file .gtags-ex.conf"
+    exit 1
+fi
+
+folders=$(grep "^folders=" $CONF | head -n1 | awk -F= '{print $2}')
+exts=$(grep "^exts=" $CONF | head -n1 | awk -F= '{print $2}')
+exts=$(echo $exts | sed -e 's/:/\n/g' | awk '{print "-o -name \""$1"\""}' | tr '\n' ' ')
+#findexp="\( -not -true $exts \)"
+findexp="\( -not -true $exts \)"
+sh -c "find $folders $findexp" > $LISTF && gtags -f $LISTF
