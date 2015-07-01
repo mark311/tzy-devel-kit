@@ -1,6 +1,12 @@
 #!/bin/sh
 
+# configuration file example:
+# ------------------
+# folder=src1 src2 ...
+# exts=*.cpp:*.h:*.java
+# ------------------
 CONF=.gtags-ex.conf
+
 LISTF=GXLIST
 
 if [ ! -f $CONF ]; then
