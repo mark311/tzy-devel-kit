@@ -1,5 +1,6 @@
 [core]
 editor = emacs
+excludesfile = ~/.gitignore_global
 
 [alias]
 st = status
