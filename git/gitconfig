@@ -12,14 +12,6 @@ untracked = ls-files --others --exclude-standard
 logx = log --graph --format=format:'%C(bold blue)%h%C(reset) -%C(bold yellow)%d%C(reset) %C(white)%s%C(reset)' -n 15
 logxd = log --graph --format=format:'%C(bold blue)%h%C(reset) -%C(bold yellow)%d%C(reset) %C(white)%s%C(reset) - %C(green)%an at %ar%C(reset)' -n 15
 
-[diff]
-tool = ediff
-
 [merge]
-tool = ediff
-
-[difftool "ediff"]
-cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\"
-
-[mergetool "ediff"]
-cmd = emacs --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
+# to show ancestor (the original version) when resolve conflicts
+conflictstyle = diff3
