@@ -1,5 +1,5 @@
 ;; Common
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path "/usr/local/share/gtags")
 
 (ido-mode)
