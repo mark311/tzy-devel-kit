@@ -95,6 +95,9 @@
      )
   )
 
+;; JDEE
+(add-to-list 'load-path "~/.emacs.d/3rdlib/jdee-2.4.1/lisp")
+(load "jde")
 
 ;; Coding Style
 (setq c-default-style "linux"
