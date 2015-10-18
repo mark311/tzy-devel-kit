@@ -2,7 +2,7 @@
 
 # configuration file example:
 # ------------------
-# folder=src1 src2 ...
+# folders=src1 src2 ...
 # exts=*.cpp:*.h:*.java
 # ------------------
 CONF=.gtags-ex.conf
