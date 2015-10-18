@@ -1,0 +1,6 @@
+# Load common bash configurations
+TZY_DEVEL_KIT_PATH=/path-to-the-root-of/tzy-devel-kit
+source $TZY_DEVEL_KIT_PATH/bashrc/bashrc_common
+
+# Your customized configurations
+# ...
