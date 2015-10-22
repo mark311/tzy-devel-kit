@@ -5,6 +5,7 @@
 (ido-mode)
 ;; (desktop-save-mode 1)
 (setq completion-ignore-case nil)
+(setq column-number-mode t)
 
 (global-set-key (kbd "M-p") (lambda () (interactive) (scroll-down 1)))
 (global-set-key (kbd "M-n") (lambda () (interactive) (scroll-up 1)))
