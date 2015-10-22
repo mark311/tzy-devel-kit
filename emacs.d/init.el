@@ -144,11 +144,7 @@
 ;; Fill column indicator
 (require 'fill-column-indicator)
 (setq fci-rule-width 1)
-(setq fci-rule-color "darkblue")
-;; FIXME: There is a bug in fci-mode, see:
-;; <https://github.com/alpaker/Fill-Column-Indicator/issues/31>
-;; So don't autoload fci-mode for now.
-;; You can still enable it by M-x fci-mode when needed.
+;;(setq fci-rule-color "brightblack")
 ;;(add-hook 'prog-mode-hook 'fci-mode)
 
 ;; This snippet enables lua-mode
