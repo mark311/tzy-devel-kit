@@ -19,3 +19,10 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias ll='ls -l'
 alias em='emacsclient -t -a emacs'
+
+# Unbind 'C-s' from the feature that locking the screen, which can
+# unlock through 'C-q' then.  Another purpose is to enable the bash
+# command 'forward-search-history', which binds to 'C-s'.  So that
+# 'reverse-search-history' (binds to 'C-r') and #
+# 'forward-search-history' can be used in pair.
+stty -ixon
