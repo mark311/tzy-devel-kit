@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Command+Backquote(`) to Backquote(`)</name>
+    <appendix>Command+Backquote(`) to Backquote(`)</appendix>
+    <identifier>command_backquote_to_backquote</identifier>
+    <autogen>__KeyToKey__ KeyCode::BACKQUOTE, ModifierFlag::COMMAND_R, KeyCode::BACKQUOTE</autogen>
+  </item>
+</root>
