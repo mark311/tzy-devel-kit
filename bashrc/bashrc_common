@@ -26,3 +26,11 @@ alias em='emacsclient -t -a emacs'
 # 'reverse-search-history' (binds to 'C-r') and #
 # 'forward-search-history' can be used in pair.
 stty -ixon
+
+
+# Configuration for jEnv.
+# see http://www.jenv.be/
+if [ -x ~/.jenv/bin/jenv ]; then
+  alias jenv='~/.jenv/bin/jenv'
+  eval "$(jenv init -)"
+fi
