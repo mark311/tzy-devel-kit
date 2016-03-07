@@ -18,7 +18,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias ll='ls -l'
-alias e='emacs -q'
+alias em='emacs -q'
 
 # Unbind 'C-s' from the feature that locking the screen, which can
 # unlock through 'C-q' then.  Another purpose is to enable the bash
