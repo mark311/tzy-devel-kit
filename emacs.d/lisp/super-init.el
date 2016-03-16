@@ -128,6 +128,12 @@
 (global-set-key (kbd "C-x 9") 'zoom-window-zoom)
 (setq zoom-window-mode-line-color "navy blue")
 
+;; transpose frame
+(require 'transpose-frame)
+(global-set-key (kbd "C-x 4 t") 'transpose-frame)
+(global-set-key (kbd "C-x 4 v") 'flip-frame)
+(global-set-key (kbd "C-x 4 h") 'flop-frame)
+
 ;; Markdown
 (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
