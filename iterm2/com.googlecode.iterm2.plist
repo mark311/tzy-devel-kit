@@ -3030,17 +3030,17 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>774 448 222 309 0 0 1680 1027 </string>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>942 385 445 103 0 0 1680 1027 </string>
+	<string>2805 259 445 77 1680 -30 1920 1057 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>202 338 924 485 0 0 1680 1027 </string>
+	<string>1946 327 924 485 1680 -30 1920 1057 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>320 114 592 584 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 561 572 452 0 0 1680 1027 </string>
+	<string>12 525 652 502 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 575 572 452 0 0 1680 1027 </string>
+	<string>519 262 572 452 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>890 405 964 622 0 0 1680 1027 </string>
+	<string>1750 260 572 452 1680 -30 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>96 431 572 452 0 0 1680 1027 </string>
 	<key>New Bookmarks</key>
@@ -3592,11 +3592,11 @@
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
-			<string>Monaco 12</string>
+			<string>Monaco 14</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Monaco 12</string>
+			<string>Monaco 14</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -4496,10 +4496,12 @@
 			<string>/Users/mark</string>
 		</dict>
 	</array>
+	<key>NoSyncHaveShownPromoWithId_4</key>
+	<true/>
 	<key>NoSyncTimeOfLastPromo</key>
-	<real>465549705.25624198</real>
+	<real>477903871.53601497</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
-	<real>471010767.21842998</real>
+	<real>479131025.95537698</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -4539,7 +4541,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-12-05T12:19:08Z</date>
+	<date>2016-03-09T06:37:40Z</date>
 	<key>SUSkippedVersion</key>
 	<string>2.1.4</string>
 	<key>SavePasteHistory</key>
