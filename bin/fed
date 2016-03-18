@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# `fed' is an abbreviation of `File Editor'
+
+if [ "$#" -eq 0 ]; then
+    echo "fed is a wrapper of stream editor to make it a file editor"
+    echo "usage: fed stream_editor_command \\; file1 [file2 ...]"
+    exit 1
+fi
+
+#perl -e 'print "$_\n" for @ARGV' "$@"
+#exit 0
+
+declare -a CMD=()
+while [ "$1" != ";" ]; do
+    CMD[${#CMD[@]}]=$1  # append to array CMD
+    shift 1;
+done
+
+while shift 1 && [[ ! -z "$1" ]]; do
+    if [[ ! -e "$1.~fed" ]]; then
+	cp -p "$1" "$1.~fed"
+    fi
+    cp -pf "$1.~fed" "$1"
+
+    cat "$1" | "${CMD[@]}" "$1" > "$1.#fed"
+    mv -f "$1.#fed" "$1"
+
+    diff -u "$1.~fed" "$1"
+done
