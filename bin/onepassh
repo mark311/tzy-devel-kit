@@ -1,0 +1,89 @@
+#!/usr/bin/expect --
+
+# parse options
+set opt_H ""
+set opt_h ""
+set opt_u ""
+set argstart 0
+for {set i 0} {$i < [llength $argv]} {incr i} {
+    switch -- [lindex $argv $i] {
+        "-H" {
+            incr i
+            set opt_H [lindex $argv $i]
+        }
+        "-h" {
+            incr i
+            set opt_h [lindex $argv $i]
+        }
+        "-u" {
+            incr i
+            set opt_u [lindex $argv $i]
+        }
+        default {
+            set argstart $i
+            break
+        }
+    }
+}
+
+#puts $opt_H
+#puts $opt_h
+#puts $opt_u
+#puts $argstart
+
+
+# parse hosts list
+if {$opt_h != ""} {
+    set infile [open $opt_h r]
+    set targets {}
+    while { [gets $infile host] >= 0 } {
+        if {$opt_u != ""} {
+            lappend targets "$opt_u@$host"
+        } else {
+            lappend targets $host
+        }
+    }
+    close $infile
+} elseif {$opt_H != ""} {
+    set hosts [split $opt_H " "]
+    set targets {}
+    foreach host $hosts {
+        if {$opt_u != ""} {
+            lappend targets "$opt_u@$host"
+        } else {
+            lappend targets $host
+        }
+    }
+}
+
+#foreach target $targets {puts $target}
+
+set sshcmd [lrange $argv $argstart [expr {$argc-1}]]
+#puts $sshcmd
+
+
+# Prompt for the password
+stty -echo
+send_user "Password: "
+expect_user -re "(.*)\n"
+set password $expect_out(1,string)
+stty echo
+puts ""
+
+for {set i 0} {$i < [llength $targets]} {incr i} {
+    set target [lindex $targets $i]
+    set cmdline {}
+    foreach token $sshcmd {
+        regsub -all "{}" $token $target token
+        lappend cmdline $token
+    }
+    ;#puts $cmdline
+    ;#continue
+    eval spawn $cmdline
+    expect {
+        "Are you sure you want to continue connecting (yes/no)? "  {send "yes\n"; exp_continue;}
+        "s password: "  {send "$password\n"; exp_continue;}
+        -re "password for \[a-zA-Z0-9_.\-\]*: "   {send "$password\n"; exp_continue;}
+    }
+    wait
+}
