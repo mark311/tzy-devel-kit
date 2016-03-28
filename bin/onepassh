@@ -85,5 +85,7 @@ for {set i 0} {$i < [llength $targets]} {incr i} {
         "s password: "  {send "$password\n"; exp_continue;}
         -re "password for \[a-zA-Z0-9_.\-\]*: "   {send "$password\n"; exp_continue;}
     }
-    wait
+    if { [catch {interact} errmsg ] } {
+	puts stderr "warn: $errmsg"
+    }
 }
