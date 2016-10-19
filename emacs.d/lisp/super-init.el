@@ -170,6 +170,7 @@
  '(diff-added ((t (:inherit diff-changed :foreground "green"))))
  '(diff-refine-added ((t (:inherit diff-refine-change))))
  '(diff-refine-change ((t (:weight bold))))
+ '(diff-refine-changed ((t (:weight bold))))
  '(diff-refine-removed ((t (:inherit diff-refine-change))))
  '(diff-removed ((t (:inherit diff-changed :foreground "red"))))
  '(font-lock-builtin-face ((t (:foreground "white"))))
