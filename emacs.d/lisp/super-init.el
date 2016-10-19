@@ -166,11 +166,11 @@
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control))))))
 (custom-set-faces
- '(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "default" :family "Monaco"))))
+ '(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "default" :family "Monaco"))))
  '(diff-added ((t (:inherit diff-changed :foreground "green"))))
  '(diff-refine-added ((t (:inherit diff-refine-change))))
  '(diff-refine-change ((t (:weight bold))))
- '(diff-refine-changed ((t (:weight bold))))
+ '(diff-refine-changed ((t (:inverse-video t))))
  '(diff-refine-removed ((t (:inherit diff-refine-change))))
  '(diff-removed ((t (:inherit diff-changed :foreground "red"))))
  '(font-lock-builtin-face ((t (:foreground "white"))))
