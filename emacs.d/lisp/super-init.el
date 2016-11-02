@@ -10,6 +10,14 @@
 (global-set-key (kbd "M-p") (lambda () (interactive) (scroll-down 1)))
 (global-set-key (kbd "M-n") (lambda () (interactive) (scroll-up 1)))
 
+;; Remap help-map with M-h instead of C-h, make C-h to be translated to DEL.
+;; Note that C-M-h will be translated to M-DEL correctly under terminals, but
+;; incorrectly under GUI version emacs. So bind it explicitly.
+;; See: <https://www.emacswiki.org/emacs/BackspaceKey>
+(global-set-key (kbd "M-h") help-map)
+(define-key key-translation-map [?\C-h] [?\C-?])
+(global-set-key (kbd "C-M-h") 'backward-kill-word)  ;; for compatibility of GUI version
+
 (defun move-end-of-line-and-newline-and-indent()
   "At anywhere in a line, goto end and indent-return"
   (interactive)
