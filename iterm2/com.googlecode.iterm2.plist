@@ -21,7 +21,7 @@
 	<key>ClosingHotkeySwitchesSpaces</key>
 	<true/>
 	<key>CommandSelection</key>
-	<true/>
+	<false/>
 	<key>Control</key>
 	<integer>1</integer>
 	<key>CopyLastNewline</key>
@@ -3036,11 +3036,11 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>1946 613 924 485 1680 256 1920 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>1949 377 796 474 1680 256 1920 1057 </string>
+	<string>212 125 937 466 0 0 1680 1027 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>320 114 592 584 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 524 652 503 0 0 1680 1027 </string>
+	<string>0 30 1676 997 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>2311 189 652 502 1680 -30 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -4508,12 +4508,29 @@
 	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>8FCA3893-B7E6-4D96-BF1C-62E7B38DF143</string>
+	<key>NoSyncLastTipTime</key>
+	<real>498482228.36036199</real>
+	<key>NoSyncPermissionToShowTip</key>
+	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>496904568.91697401</real>
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>477903871.53601497</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
 	<real>496747235.49908602</real>
+	<key>NoSyncTipsToNotShow</key>
+	<array>
+		<string>000</string>
+		<string>0000</string>
+		<string>0001</string>
+		<string>0002</string>
+		<string>0003</string>
+		<string>0004</string>
+		<string>0005</string>
+		<string>0006</string>
+		<string>0007</string>
+		<string>0008</string>
+	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -4555,7 +4572,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-09-30T04:53:38Z</date>
+	<date>2016-10-18T08:12:18Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
