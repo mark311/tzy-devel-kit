@@ -1,0 +1,4 @@
+~/.screenrc
+escape ^o^o
+caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= @%H - %Y-%m-%d %c"
+
