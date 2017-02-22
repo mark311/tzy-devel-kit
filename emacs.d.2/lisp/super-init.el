@@ -8,11 +8,9 @@
 ;; --------------------------------------------------------------------
 (require 'helm-config)  ;; package helm
 (require 'linum-off)    ;; package linum-off
+(require 'yasnippet)    ;; package yasnippet
 (autoload 'helm-gtags-mode "helm-gtags" "" t)  ;; package helm-gtags
 (add-hook 'c-mode-common-hook 'helm-gtags-mode)
-(require 'yasnippet)
-
-
 
 ;; --------------------------------------------------------------------
 ;; Key Mapping Section
@@ -82,6 +80,10 @@
 (setq c-default-style "linux" c-basic-offset 4)
 (setq-default indent-tabs-mode nil)
 
+;; Set up babel support
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((gnuplot . t)))
 
 ;; --------------------------------------------------------------------
 ;; Modes Activations
