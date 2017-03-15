@@ -48,7 +48,7 @@
 ;; yasnippet
 (define-key yas-minor-mode-map (kbd "<tab>") nil)
 (define-key yas-minor-mode-map (kbd "TAB") nil)
-(define-key yas-minor-mode-map (kbd "M-?") 'yas-expand)
+;;(define-key yas-minor-mode-map (kbd "M-?") 'yas-expand)
 
 
 
@@ -84,6 +84,16 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((gnuplot . t)))
+
+;; Need gxref package
+
+(require 'gxref)
+(defun gxref-xref-backend-fallthrough ()
+  "Gxref backend for Xref. If no Gtags database found, fall
+  through and use next backend"
+  (if (gxref--find-project-root) 'gxref nil))
+
+(add-to-list 'xref-backend-functions 'gxref-xref-backend-fallthrough)
 
 ;; --------------------------------------------------------------------
 ;; Modes Activations
