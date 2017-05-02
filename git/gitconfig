@@ -10,7 +10,7 @@ co = checkout
 untracked = ls-files --others --exclude-standard
 
 logx = log --graph --format=format:'%C(bold blue)%h%C(reset) -%C(bold yellow)%d%C(reset) %C(white)%s%C(reset)' -n 15
-logxd = log --date=short --graph --format=format:'%C(bold blue)%h%C(reset) - %C(green)(%cd/%cn)%C(reset)%C(bold yellow)%d%C(reset) %C(white)%s%C(reset)' -n 15
+logxd = log --date=short --graph --format=format:'%C(bold blue)%h%C(reset) - %C(green)(%cd/%ad/%an)%C(reset)%C(bold yellow)%d%C(reset) %C(white)%s%C(reset)' -n 15
 
 [merge]
 # to show ancestor (the original version) when resolve conflicts
