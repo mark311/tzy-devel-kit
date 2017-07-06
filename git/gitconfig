@@ -15,3 +15,7 @@ logxd = log --date=short --graph --format=format:'%C(bold blue)%h%C(reset) - %C(
 [merge]
 # to show ancestor (the original version) when resolve conflicts
 conflictstyle = diff3
+
+[rebase]
+# usage: git commit --fixup <commit>, and git rebase -i will automatically do fixing up.
+autoSquash = true
