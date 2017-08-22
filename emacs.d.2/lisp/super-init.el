@@ -120,8 +120,11 @@
    (quote
     (async markdown-mode yasnippet linum-off helm-gtags gxref))))
 
+
+;; --------------------------------------------------------------------
+;; Custom Faces
+;; --------------------------------------------------------------------
 (custom-set-faces
- '(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "default" :family "Monaco"))))
  '(diff-added ((t (:inherit diff-changed :foreground "green"))))
  '(diff-refine-added ((t (:inherit diff-refine-change))))
  '(diff-refine-change ((t (:weight bold))))
@@ -134,5 +137,15 @@
  '(helm-selection ((t (:background "#3a3a3a" :underline t))))
  '(org-table ((t (:foreground "green"))))
  '(region ((t (:background "#00008e")))))
+
+(if (display-graphic-p)
+    ;; for GUI
+    (custom-set-faces
+     ;; SimHei (仿黑) 是Mac下面的一种中文正好是英文两倍宽的字体.
+     '(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "nil" :family "SimHei")))))
+
+  ;; for non-GUI
+  (custom-set-faces
+   '(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "default" :family "Monaco"))))))
 
 (provide 'super-init)
