@@ -16,6 +16,13 @@
 ;; Key Mapping Section
 ;; --------------------------------------------------------------------
 
+;; Swap Command key and Option key in GUI mode.
+;; It seems that only M-TAB doesn't works.
+;; https://apple.stackexchange.com/questions/291194/how-do-i-make-cmd-as-meta-instead-of-option-alt-key-on-emacs-runs-on-ter
+(if (display-graphic-p)
+    (setq mac-command-modifier 'meta
+          mac-option-modifier 'super))
+
 ;; Scroll 1 line up/down
 (global-set-key (kbd "M-p") (lambda () (interactive) (scroll-down 1)))
 (global-set-key (kbd "M-n") (lambda () (interactive) (scroll-up 1)))
