@@ -112,7 +112,14 @@
 (custom-set-variables
  '(ediff-split-window-function (quote split-window-horizontally))
  '(mouse-wheel-progressive-speed nil)
- '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control))))))
+ '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control)))))
+
+ ;; You can use this to (re)install packages on other machines by
+ ;; running ‘package-install-selected-packages’
+ '(package-selected-packages
+   (quote
+    (async markdown-mode yasnippet linum-off helm-gtags gxref))))
+
 (custom-set-faces
  '(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "default" :family "Monaco"))))
  '(diff-added ((t (:inherit diff-changed :foreground "green"))))
