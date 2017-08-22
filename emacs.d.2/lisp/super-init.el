@@ -112,7 +112,7 @@
 (custom-set-variables
  '(ediff-split-window-function (quote split-window-horizontally))
  '(mouse-wheel-progressive-speed nil)
- '(mouse-wheel-scroll-amount (quote (3 ((shift) . 1) ((control)))))
+ '(mouse-wheel-scroll-amount (quote (1 ((shift) . 3) ((control)))))
 
  ;; You can use this to (re)install packages on other machines by
  ;; running ‘package-install-selected-packages’
