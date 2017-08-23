@@ -149,7 +149,7 @@
     ;; for GUI
     (custom-set-faces
      ;; SimHei (仿黑) 是Mac下面的一种中文正好是英文两倍宽的字体.
-     '(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "nil" :family "SimHei")))))
+     '(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 180 :width normal :foundry "nil" :family "SimHei")))))
 
   ;; for non-GUI
   (custom-set-faces
