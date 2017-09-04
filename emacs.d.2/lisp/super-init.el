@@ -130,7 +130,7 @@
  ;; running ‘package-install-selected-packages’
  '(package-selected-packages
    (quote
-    (async markdown-mode yasnippet linum-off helm-gtags gxref))))
+    (async markdown-mode yasnippet linum-off helm-gtags gxref gnuplot-mode))))
 
 
 ;; --------------------------------------------------------------------
