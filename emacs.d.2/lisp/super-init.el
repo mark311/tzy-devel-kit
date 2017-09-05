@@ -108,6 +108,18 @@
 
 (add-to-list 'xref-backend-functions 'gxref-xref-backend-fallthrough)
 
+;; Set Org mode executable languages
+;; see http://orgmode.org/org.html#Languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (python . t)
+   (gnuplot . t)
+   (ditaa . t)
+   (plantuml . t)
+   (sh . t)
+   (R . t)))
+
 ;; --------------------------------------------------------------------
 ;; Modes Activations
 ;; --------------------------------------------------------------------
