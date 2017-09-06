@@ -118,6 +118,7 @@
    (ditaa . t)
    (plantuml . t)
    (sh . t)
+   (dot . t)
    (R . t)))
 
 ;; Set ditaa.jar location
