@@ -123,6 +123,7 @@
 
 ;; Set ditaa.jar location
 (setq org-ditaa-jar-path "~/.emacs.d/java/ditaa0_9.jar")
+(setq org-plantuml-jar-path "~/.emacs.d/java/plantuml.jar")
 
 ;; --------------------------------------------------------------------
 ;; Modes Activations
