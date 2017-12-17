@@ -48,6 +48,9 @@
 (global-set-key (kbd "C-x b") 'ido-switch-buffer)
 (global-set-key (kbd "M-s o") 'helm-occur)
 (global-set-key (kbd "M-s O") 'occur)
+(global-set-key (kbd "M-s s") 'isearch-forward-symbol-at-point)
+(global-set-key (kbd "M-s M-s") 'isearch-forward-symbol-at-point)
+(global-set-key (kbd "M-s h h") 'highlight-symbol-at-point)
 
 (eval-after-load "helm-gtags"
   '(progn
@@ -63,6 +66,22 @@
 (define-key yas-minor-mode-map (kbd "TAB") nil)
 ;;(define-key yas-minor-mode-map (kbd "M-?") 'yas-expand)
 
+(progn
+  (global-set-key [wheel-right] (lambda () (interactive) (scroll-left 1)))
+  (global-set-key [double-wheel-right] (lambda () (interactive) (scroll-left 2)))
+  (global-set-key [trible-wheel-right] (lambda () (interactive) (scroll-left 4)))
+
+  (global-set-key [wheel-left] (lambda () (interactive) (scroll-right 1)))
+  (global-set-key [double-wheel-left] (lambda () (interactive) (scroll-right 2)))
+  (global-set-key [trible-wheel-left] (lambda () (interactive) (scroll-right 4)))
+
+  (global-set-key [wheel-down] (lambda () (interactive) (scroll-up 2)))
+  (global-set-key [double-wheel-down] (lambda () (interactive) (scroll-up 4)))
+  (global-set-key [trible-wheel-down] (lambda () (interactive) (scroll-up 32)))
+
+  (global-set-key [wheel-up] (lambda () (interactive) (scroll-down 2)))
+  (global-set-key [double-wheel-up] (lambda () (interactive) (scroll-down 4)))
+  (global-set-key [trible-wheel-up] (lambda () (interactive) (scroll-down 32))))
 
 
 ;; --------------------------------------------------------------------

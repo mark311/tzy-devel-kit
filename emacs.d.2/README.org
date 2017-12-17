@@ -1,0 +1,25 @@
+* 使用说明
+
+** GUI 操作篇
+
+*** Mouse Scrolling
+
+使用Mac的touchpad可以进行上下左右四个方向的移动。
+
+*** 单词高亮
+
+光标定位到单词，使用 ~M-s M-s~ 或 ~M-s s~ 来快速启动增量单词搜索。
+
+光标定位到单词，使用 ~M-s h h~ 或 ~M-s h .~ 来快速实现单词高亮。
+
+使用 ~M-s h u~ 来取消单词高亮。
+
+*** Speedbar操作
+
+~M-x speedbar~ 启动Speedbar。
+
+在speedbar激活的状态下：
+
+~b~ 转到Quick Buffer的显示模式
+
+~f~ 转到Files的显示模式
