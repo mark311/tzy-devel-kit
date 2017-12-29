@@ -23,3 +23,21 @@
 ~b~ 转到Quick Buffer的显示模式
 
 ~f~ 转到Files的显示模式
+
+** TAGS
+
+*** 生成TAGS
+
+~C-x C-f~ 到代码的根目录（就是希望TAGS生成的目标目录）
+
+~M-! RET find . -type f -iname "*.[ch]" -o -iname "*.cpp" | etags -~
+
+*** 选择TAGS
+
+~M-x visit-tags-table RET ... RET~
+
+*** 查找符号
+
+~M-.~ 查找符号
+
+~M-,~ 回退至上个位置
