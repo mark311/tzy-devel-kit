@@ -163,6 +163,13 @@
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 3) ((control)))))
 
+ ;; Speedbar don't shown unknown format files, such as *.proto, you may
+ ;; not find them in speedbar without this variable turn on, which may
+ ;; make you consfused. To temporarily turn off this flag, you can uncheck
+ ;; the menu item in 'Speedbar > Show All Files', or 'M-x customize' and
+ ;; search "speedbar show unknow".
+ '(speedbar-show-unknown-files t)
+
  ;; You can use this to (re)install packages on other machines by
  ;; running ‘package-install-selected-packages’
  '(package-selected-packages
