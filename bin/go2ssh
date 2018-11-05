@@ -1,0 +1,62 @@
+#!/usr/bin/python2.7
+'''
+Config file location: ~/.go2ssh.conf
+
+A sample config file:
+
+[dev]
+target=user@1.1.1.1
+desc=dev machine
+
+[test]
+target=user@2.2.2.2
+desc=test machine
+
+'''
+import sys,os
+import argparse
+import ConfigParser
+
+def make_choice(message, choices):
+    numbered_choices = ["[{}] {}".format(i+1, ch) for i, ch in enumerate(choices)]
+    print "\n  ".join([message] + numbered_choices)
+    print "Choose: [1..{}]".format(len(choices)),
+    char = raw_input()
+    return int(char)
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-r", "--region", default='ALL', help="region name, or ALL, IN, EXT")
+    parser.add_argument("-c", "--conffile", default='~/.go2ssh.conf', help="config file")
+    args = parser.parse_args()
+
+    conffile = args.conffile
+    if conffile.startswith("~"):
+        conffile = os.getenv("HOME") + conffile[1:]
+
+    config = ConfigParser.ConfigParser()
+    with open(conffile, 'r') as fin:
+        config.readfp(fin)
+
+    targets = [
+        {
+            "id": id,
+            "target": config.get(id, "target"),
+            "desc": config.get(id, "desc"),
+        } for id in config.sections()
+    ]
+
+    choices = ["{} : {} - {}".format(t['id'], t['target'], t['desc']) for t in targets]
+    i = make_choice("All available targets:", choices)
+    chosen_target = targets[i-1]
+
+    cmd = ['ssh', chosen_target['target']]
+    print cmd
+    os.execvp(cmd[0], cmd)
+
+if __name__=="__main__":
+    try:
+        exit(main())
+    except KeyboardInterrupt:
+        pass
+
