@@ -165,6 +165,8 @@
 ;; Custom Variables
 ;; --------------------------------------------------------------------
 (custom-set-variables
+ '(scroll-bar-mode nil)
+ '(tool-bar-mode nil)
  '(ediff-split-window-function (quote split-window-horizontally))
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 3) ((control)))))
