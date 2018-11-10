@@ -1,6 +1,7 @@
 *~
 *#
 *.swp
+*.elc
 .DS_Store
 emacs.d/tramp
 emacs.d/bookmarks
@@ -12,6 +13,11 @@ emacs.d/init.el
 emacs.d/url
 emacs.d.2/init.el
 emacs.d.2/ede-projects.el
-emacs.d.2/elpa/
+emacs.d.2/elpa/archives
+emacs.d.2/eshell
 emacs.d.2/tutorial/
 emacs.d.2/url/
+emacs.d.2/tramp
+emacs.d.2/bookmarks
+emacs.d.2/network-security.data
+emacs.d.2/java/plantuml.jar
