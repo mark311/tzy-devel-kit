@@ -140,7 +140,9 @@
    (gnuplot . t)
    (ditaa . t)
    (plantuml . t)
-   (sh . t)
+   ;; Commented for Emacs26.1 doesn't has 'sh' language, maybe other
+   ;; name instead of 'sh'.
+   ;(sh . t)
    (dot . t)
    (R . t)))
 
