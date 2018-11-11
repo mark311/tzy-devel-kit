@@ -19,7 +19,7 @@
 (require 'my-utils)
 
 ;; --------------------------------------------------------------------
-;; Key Mapping Section
+;; 操作型的全局键位绑定
 ;; --------------------------------------------------------------------
 
 ;; Swap Command key and Option key in GUI mode.
@@ -52,6 +52,28 @@
 (global-set-key (kbd "M-s s") 'isearch-forward-symbol-at-point)
 (global-set-key (kbd "M-s M-s") 'isearch-forward-symbol-at-point)
 (global-set-key (kbd "M-s h h") 'highlight-symbol-at-point)
+
+;; --------------------------------------------------------------------
+;; 功能型的全局键位绑定      C-c <letter>
+;;
+;; - 窗口相关功能           C-c w
+;; - 项目相关功能           C-c p
+;; --------------------------------------------------------------------
+
+;; speedbar激活的时候，右手一般预先已经挪到了鼠标或触摸板上，激活的操
+;; 作需要左手单手快速完成
+(global-set-key (kbd "C-c w w") 'speedbar-get-focus)
+
+;; 激活magit的主界面
+(global-set-key (kbd "C-c w g") 'magit-status)
+
+;; 调用recompile进行项目编译构建
+(global-set-key (kbd "C-c p c") 'recompile)
+
+
+;; --------------------------------------------------------------------
+;; Mode局部键位绑定
+;; --------------------------------------------------------------------
 
 (eval-after-load "helm-gtags"
   '(progn
@@ -165,9 +187,13 @@
 ;; Custom Variables
 ;; --------------------------------------------------------------------
 (custom-set-variables
+ ;; In GUI mode, don't show scroll-bar and tool-bar, make GUI cleaner.
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
+
  '(ediff-split-window-function (quote split-window-horizontally))
+
+ ;; Make Trackpad scrolling slower
  '(mouse-wheel-progressive-speed nil)
  '(mouse-wheel-scroll-amount (quote (1 ((shift) . 3) ((control)))))
 
@@ -178,18 +204,31 @@
  ;; search "speedbar show unknow".
  '(speedbar-show-unknown-files t)
 
- ;; You can use this to (re)install packages on other machines by
- ;; running ‘package-install-selected-packages’
- '(package-selected-packages
+ ;; Speedbar: don't show an icon in the left of each line, use acsii characters
+ ;; instead.
+ '(speedbar-use-images nil)
+
+ ;; Speedbar: set bigger initial width
+ '(speedbar-frame-parameters
    (quote
-    (async markdown-mode yasnippet linum-off helm-gtags gxref gnuplot gnuplot-mode
-           go-mode))))
+    ((minibuffer)
+     (width . 35)
+     (border-width . 0)
+     (menu-bar-lines . 0)
+     (tool-bar-lines . 0)
+     (unsplittable . t)
+     (left-fringe . 0))))
+
+ )
 
 
 ;; --------------------------------------------------------------------
 ;; Custom Faces
 ;; --------------------------------------------------------------------
 (custom-set-faces
+
+ ;; 各种界面颜色的配置，各种界面保持协调，包括全局背景、diff、helm、org等。
+ ;; 如果要修改，需要整体上评估色彩的协调性。
  '(diff-added ((t (:inherit diff-changed :foreground "green"))))
  '(diff-refine-added ((t (:inherit diff-refine-change))))
  '(diff-refine-change ((t (:weight bold))))
@@ -201,16 +240,14 @@
  '(helm-ff-directory ((t (:background "black" :foreground "#5c5cff"))))
  '(helm-selection ((t (:background "#3a3a3a" :underline t))))
  '(org-table ((t (:foreground "green"))))
- '(region ((t (:background "#00008e")))))
+ '(region ((t (:background "#00008e"))))
 
-(if (display-graphic-p)
-    ;; for GUI
-    (custom-set-faces
-     ;; SimHei (仿黑) 是Mac下面的一种中文正好是英文两倍宽的字体.
-     '(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "nil" :family "SimHei")))))
+ ;; SimHei (仿黑) 是Mac下面的一种中文正好是英文两倍宽的字体
+ ;; 但因为这种字体显示不够圆润，对眼睛不好，所以暂不用它。
+ ;'(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "nil" :family "SimHei")))))
 
-  ;; for non-GUI
-  (custom-set-faces
-   '(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "default" :family "Monaco"))))))
+ ;; Monaco 14px 是一种相对圆润的字体，与我配置的Iterm2中的字体保持一致
+ '(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "default" :family "Monaco"))))
+ )
 
 (provide 'super-init)
