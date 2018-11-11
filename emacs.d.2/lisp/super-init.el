@@ -67,6 +67,9 @@
 ;; 激活magit的主界面
 (global-set-key (kbd "C-c w g") 'magit-status)
 
+;; revert-buffer
+(global-set-key (kbd "C-c r") 'revert-buffer)
+
 ;; 调用recompile进行项目编译构建
 (global-set-key (kbd "C-c p c") 'recompile)
 
