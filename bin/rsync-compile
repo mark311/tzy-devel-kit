@@ -1,0 +1,112 @@
+#!/usr/bin/python
+'''
+config format:
+
+---
+[myremote1]
+server=zhiyang.tzy@1.1.1.1
+path=/home/zhiyang.tzy/project1/
+
+[myremote2]
+server=zhiyang.tzy@2.2.2.2
+path=/home/zhiyang.tzy/project1/
+---
+
+'''
+import os,sys
+import subprocess
+import collections
+import itertools
+import logging
+import ConfigParser
+
+CONFFILE_NAME = ".RsyncCompileRemotes"
+RSYNC_EXCLUDE_LIST = ['*.git', "*.idea", "*.iml", "TAGS", CONFFILE_NAME]
+
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("rsync-compile")
+
+Conf = collections.namedtuple('Conf', ['rserver', 'rpath', 'lpath'])
+
+def join_command_list(cmdlist):
+    def quote(elem):
+        if any(c in '*"\' ' for c in elem):
+            return '"' + elem.replace('"', '\\"') + '"'
+        else:
+            return elem
+    return " ".join([quote(e) for e in cmdlist])
+
+def rsync_push(conf):
+    exclude_params = []
+    for x in RSYNC_EXCLUDE_LIST:
+        exclude_params += ['--exclude', x]
+
+    rpath = conf.rpath
+    if not rpath.endswith('/'):
+        rpath += '/'
+
+    lpath = conf.lpath
+    if not lpath.endswith('/'):
+        lpath += '/'
+
+    rsync_command = ['rsync', '-cav', '--delete'] + exclude_params + [lpath, conf.rserver+":"+rpath]
+    #logger.info('execute rsync command: {}'.format(" ".join(rsync_command)))
+    logger.info('execute rsync command: {}'.format(join_command_list(rsync_command)))
+
+    rc = subprocess.call(rsync_command)
+    if rc != 0:
+        exit(rc)
+
+def remote_compile(conf, command):
+    ssh_cmd = ['ssh']
+
+    # With ssh options '-t -t' given, the user spawned process will be
+    # killed if we interrupt the ssh.
+    # see: https://unix.stackexchange.com/questions/103699/kill-process-spawned-by-ssh-when-ssh-dies
+    ssh_cmd += ['-t', '-t']
+
+    ssh_cmd += [conf.rserver, "cd {}; {}".format(conf.rpath, command)]
+    logger.info('execute compile command: {}'.format(join_command_list(ssh_cmd)))
+
+    rc = subprocess.call(ssh_cmd)
+    if rc != 0:
+        exit(rc)
+
+def main():
+    if not os.path.isfile(CONFFILE_NAME):
+        raise Exception("can't find {} in current directory".format(CONFFILE_NAME))
+
+    config = ConfigParser.ConfigParser()
+    with open(CONFFILE_NAME, 'r') as fin:
+        config.readfp(fin)
+
+    if len(sys.argv) == 1:
+        print "usage: rsync-compile <REMOTE> [<COMMAND>]"
+        print
+        print "\n  ".join(["Available remotes"] + config.sections())
+        exit(1)
+
+    remote = sys.argv[1]
+
+    command = None
+    if len(sys.argv) >= 3:
+        command = sys.argv[2]
+
+    if not config.has_section(remote):
+        raise Exception("unknown remote {}".format(remote))
+    
+    conf = Conf(rserver=config.get(remote, "server"),
+                rpath=config.get(remote, "path"),
+                lpath="./")
+
+    logger.info("Server: {}".format(conf.rserver))
+    logger.info("Path (remote): {}".format(conf.rpath))
+
+    rsync_push(conf)
+
+    if command is not None:
+        remote_compile(conf, command)
+
+if __name__ == "__main__":
+    exit(main())
