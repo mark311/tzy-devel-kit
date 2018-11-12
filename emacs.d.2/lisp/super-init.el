@@ -57,6 +57,7 @@
 ;; 功能型的全局键位绑定      C-c <letter>
 ;;
 ;; - 窗口相关功能           C-c w
+;; - 文件相关功能           C-c f
 ;; - 项目相关功能           C-c p
 ;; --------------------------------------------------------------------
 
@@ -68,7 +69,10 @@
 (global-set-key (kbd "C-c w g") 'magit-status)
 
 ;; revert-buffer
-(global-set-key (kbd "C-c r") 'revert-buffer)
+(global-set-key (kbd "C-c f r") 'revert-buffer)
+
+;; delete white spaces
+(global-set-key (kbd "C-c f w") 'delete-trailing-whitespace)
 
 ;; 调用recompile进行项目编译构建
 (global-set-key (kbd "C-c p c") 'recompile)
@@ -222,8 +226,13 @@
      (unsplittable . t)
      (left-fringe . 0))))
 
- )
+ ;; Speedbar: 设置能进一步分析文件内部结构的文件名后缀。（默认值缺少对
+ ;; go的支持，因此修改这个值）
+ '(speedbar-supported-extension-expressions
+   (quote
+    (".go" ".org" ".[ch]\\(\\+\\+\\|pp\\|c\\|h\\|xx\\)?" ".tex\\(i\\(nfo\\)?\\)?" ".el" ".emacs" ".l" ".lsp" ".p" ".java" ".js" ".f\\(90\\|77\\|or\\)?" ".ad[abs]" ".p[lm]" ".tcl" ".m" ".scm" ".pm" ".py" ".g" ".s?html" ".ma?k" "[Mm]akefile\\(\\.in\\)?")))
 
+ )
 
 ;; --------------------------------------------------------------------
 ;; Custom Faces
