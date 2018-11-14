@@ -75,7 +75,7 @@
 (global-set-key (kbd "C-c f w") 'delete-trailing-whitespace)
 
 ;; 调用recompile进行项目编译构建
-(global-set-key (kbd "C-c p c") 'recompile)
+(global-set-key (kbd "C-c p c") 'my/recompile)
 
 
 ;; --------------------------------------------------------------------
