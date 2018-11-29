@@ -96,6 +96,17 @@
 (define-key yas-minor-mode-map (kbd "TAB") nil)
 ;;(define-key yas-minor-mode-map (kbd "M-?") 'yas-expand)
 
+;; Since emacs 26.1, C-M-h is bind to another c/c++-mode function. It
+;; overwrites my pre-defined action, which is 'backward-kill-word.
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (progn
+               (define-key c++-mode-map (kbd "C-M-h") nil)
+               (define-key c-mode-map (kbd "C-M-h") nil)
+               (define-key java-mode-map (kbd "C-M-h") nil)
+               (define-key awk-mode-map (kbd "C-M-h") nil))))
+
+;; org mode
 (add-hook 'org-mode-hook
           (lambda ()
             (progn
@@ -107,6 +118,7 @@
               (global-set-key [double-wheel-left] (lambda () (interactive) (scroll-right 2)))
               (global-set-key [trible-wheel-left] (lambda () (interactive) (scroll-right 4))))))
 
+;; mouse
 (progn
   (global-set-key [wheel-down] (lambda () (interactive) (scroll-up 2)))
   (global-set-key [double-wheel-down] (lambda () (interactive) (scroll-up 4)))
