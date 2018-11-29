@@ -3,6 +3,9 @@
 config format:
 
 ---
+[.basic]
+exclude=*.git:*.idea:*.iml:TAGS
+
 [myremote1]
 server=zhiyang.tzy@1.1.1.1
 path=/home/zhiyang.tzy/project1/
@@ -21,13 +24,13 @@ import logging
 import ConfigParser
 
 CONFFILE_NAME = ".RsyncCompileRemotes"
+BASIC_SECTION_NAME = ".basic"
 RSYNC_EXCLUDE_LIST = ['*.git', "*.idea", "*.iml", "TAGS", CONFFILE_NAME]
-
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("rsync-compile")
 
-Conf = collections.namedtuple('Conf', ['rserver', 'rpath', 'lpath'])
+Conf = collections.namedtuple('Conf', ['rserver', 'rpath', 'lpath', 'excludes'])
 
 def join_command_list(cmdlist):
     def quote(elem):
@@ -39,7 +42,7 @@ def join_command_list(cmdlist):
 
 def rsync_push(conf):
     exclude_params = []
-    for x in RSYNC_EXCLUDE_LIST:
+    for x in conf.excludes:
         exclude_params += ['--exclude', x]
 
     rpath = conf.rpath
@@ -95,10 +98,16 @@ def main():
 
     if not config.has_section(remote):
         raise Exception("unknown remote {}".format(remote))
-    
+
+    excludes = RSYNC_EXCLUDE_LIST
+    if config.has_section(BASIC_SECTION_NAME):
+        excludes = config.get(BASIC_SECTION_NAME, "exclude").split(":")
+        excludes = RSYNC_EXCLUDE_LIST + excludes
+
     conf = Conf(rserver=config.get(remote, "server"),
                 rpath=config.get(remote, "path"),
-                lpath="./")
+                lpath="./",
+                excludes=excludes)
 
     logger.info("Server: {}".format(conf.rserver))
     logger.info("Path (remote): {}".format(conf.rpath))
