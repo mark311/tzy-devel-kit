@@ -4,15 +4,13 @@ config format:
 
 ---
 [.basic]
-exclude=*.git:*.idea:*.iml:TAGS
-
-[myremote1]
 server=zhiyang.tzy@1.1.1.1
 path=/home/zhiyang.tzy/project1/
+exclude=*.git:*.idea:*.iml:TAGS
+target=mytarget1
 
-[myremote2]
-server=zhiyang.tzy@2.2.2.2
-path=/home/zhiyang.tzy/project1/
+[mytarget1]
+cmd=cd ../ && scons nuwa
 ---
 
 '''
@@ -77,35 +75,34 @@ def remote_compile(conf, command):
         exit(rc)
 
 def main():
+    # read configuration file
     if not os.path.isfile(CONFFILE_NAME):
         raise Exception("can't find {} in current directory".format(CONFFILE_NAME))
-
     config = ConfigParser.ConfigParser()
     with open(CONFFILE_NAME, 'r') as fin:
         config.readfp(fin)
+    if not config.has_section(BASIC_SECTION_NAME):
+        raise Exception("can't find section %s in %s".format(BASIC_SECTION_NAME, CONFFILE_NAME))
 
-    if len(sys.argv) == 1:
-        print "usage: rsync-compile <REMOTE> [<COMMAND>]"
-        print
-        print "\n  ".join(["Available remotes"] + config.sections())
-        exit(1)
-
-    remote = sys.argv[1]
-
-    command = None
-    if len(sys.argv) >= 3:
-        command = sys.argv[2]
-
-    if not config.has_section(remote):
-        raise Exception("unknown remote {}".format(remote))
-
+    # parse 'excludes' list
     excludes = RSYNC_EXCLUDE_LIST
-    if config.has_section(BASIC_SECTION_NAME):
+    if config.has_option(BASIC_SECTION_NAME, "exclude"):
         excludes = config.get(BASIC_SECTION_NAME, "exclude").split(":")
         excludes = RSYNC_EXCLUDE_LIST + excludes
 
-    conf = Conf(rserver=config.get(remote, "server"),
-                rpath=config.get(remote, "path"),
+    # determine 'target'
+    target = None
+    if len(sys.argv) >= 2:
+        target = sys.argv[1]
+    elif config.has_option(BASIC_SECTION_NAME, "target"):
+        target = config.get(BASIC_SECTION_NAME, "target")
+
+    if not config.has_option(target, 'cmd'):
+        raise Exception('target %s does not contain "cmd" option' % target)
+    command = config.get(target, 'cmd')
+
+    conf = Conf(rserver=config.get(BASIC_SECTION_NAME, "server"),
+                rpath=config.get(BASIC_SECTION_NAME, "path"),
                 lpath="./",
                 excludes=excludes)
 
