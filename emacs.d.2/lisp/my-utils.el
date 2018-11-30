@@ -11,9 +11,10 @@ window in the current frame, even if there has already a
 *compilation* window in other frame."
   (interactive)
   (let ((last-frame (selected-frame)))
-  (select-frame-by-name "*compilation*")
-  (recompile)
-  (select-frame last-frame)))
+    (select-frame-by-name "*compilation*")
+    (recompile)
+    (end-of-buffer)
+    (select-frame-set-input-focus last-frame)))
 
 
 (provide 'my-utils)
