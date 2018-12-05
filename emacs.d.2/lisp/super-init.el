@@ -52,6 +52,7 @@
 (global-set-key (kbd "M-s s") 'isearch-forward-symbol-at-point)
 (global-set-key (kbd "M-s M-s") 'isearch-forward-symbol-at-point)
 (global-set-key (kbd "M-s h h") 'highlight-symbol-at-point)
+(global-set-key (kbd "M-(") 'my/insert-parentheses)
 
 ;; --------------------------------------------------------------------
 ;; 功能型的全局键位绑定      C-c <letter>

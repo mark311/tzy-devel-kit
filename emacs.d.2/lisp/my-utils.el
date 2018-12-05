@@ -16,5 +16,13 @@ window in the current frame, even if there has already a
     (end-of-buffer)
     (select-frame-set-input-focus last-frame)))
 
+(defun my/insert-parentheses (arg)
+  "overwrite insert-parentheses, let normal call to this command
+to be `insert-parentheses', and C-u (prefix with 4) to be
+`delete-pair'"
+  (interactive "p")
+  (if (equal arg 4)
+      (delete-pair)
+    (insert-parentheses)))
 
 (provide 'my-utils)
