@@ -1,8 +1,32 @@
 # Emacs Keys
 
-## 基本操作
+## 搜索
 
 * `M-s M-s` 或 `M-s s` - 搜索当前位置单词
+
+## 括号操作
+
+* `M-(`     - 插入一对括号。如果有被选择区域，则把选中区域包围。
+* `C-M-k`   - 删除括号及内容
+* `C-M-u`   - 移动到上级括号
+* `C-M-n`   - 移动下一个平级括号
+* `C-M-p`   - 移动上一个平级括号
+
+## C-c <letter> 系列
+
+在[D.2 Key Binding Conventions](https://www.gnu.org/software/emacs/manual/html_node/elisp/Key-Binding-Conventions.html)中有关于`C-c <letter>`的按键约定，如下：
+
+    Don't define C-c letter as a key in Lisp programs. Sequences consisting of C-c and a letter (either upper or lower case) are reserved for users; they are the only sequences reserved for users, so do not block them.
+    Changing all the Emacs major modes to respect this convention was a lot of work; abandoning this convention would make that work go to waste, and inconvenience users. Please comply with it.
+
+作为一个用户，我有权进行重定义 :)
+
+
+* `C-c w g` 激活magit的主界面
+* `C-c p c` 调用recompile进行项目编译构建
+* `C-c w w` 激活speedbar。右手一般预先已经挪到了鼠标或触摸板上，激活的操作需要左手单手快速完成。
+* `C-c f r` revert-buffer
+* `C-c f w` delete white spaces
 
 ## GUI模式快速关闭窗口
 
@@ -68,4 +92,3 @@
 `b` 转到Quick Buffer的显示模式
 
 `f` 转到Files的显示模式
-
