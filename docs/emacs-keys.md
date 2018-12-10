@@ -56,13 +56,25 @@
 
 **生成TAGS文件**
 
-进入代码的根目录（就是希望TAGS生成的目标目录），执行
+有两种生成TAGS文件的方式：
+* 一是生成全局的TAGS
+* 二是per directory生成局部的TAGS，然后分别加载这些TAGS
 
-`M-! RET find . -type f -iname "*.[ch]" -o -iname "*.cpp" | etags -`
+第一种方式生成，进入代码的根目录（就是希望TAGS生成的目标目录），执行
 
-**选择TAGS文件**
+`M-! find . -type f -iname "*.[ch]" -o -iname "*.cpp" | etags -`
+
+第二种方式生成：
+
+`M-! etags *.go`
+
+然后加载它，
 
 `M-x visit-tags-table RET ... RET`
+
+清空已经加载的tags table:
+
+`M-x tags-reset-tags-tables RET`
 
 **查找符号**
 
