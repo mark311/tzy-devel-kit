@@ -19,6 +19,3 @@ conflictstyle = diff3
 [rebase]
 # usage: git commit --fixup <commit>, and git rebase -i will automatically do fixing up.
 autoSquash = true
-[user]
-	name = zhiyang.tzy
-	email = zhiyang.tzy@alibaba-inc.com
