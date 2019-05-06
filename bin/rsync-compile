@@ -7,6 +7,11 @@ config format:
 server=zhiyang.tzy@1.1.1.1
 path=/home/zhiyang.tzy/project1/
 exclude=*.git:*.idea:*.iml:TAGS
+
+# command executed before rsync push to remote
+clean_cmd=make clean
+
+# default target name
 target=mytarget1
 
 [mytarget1]
@@ -52,7 +57,6 @@ def rsync_push(conf):
         lpath += '/'
 
     rsync_command = ['rsync', '-cav', '--delete'] + exclude_params + [lpath, conf.rserver+":"+rpath]
-    #logger.info('execute rsync command: {}'.format(" ".join(rsync_command)))
     logger.info('execute rsync command: {}'.format(join_command_list(rsync_command)))
 
     rc = subprocess.call(rsync_command)
@@ -106,8 +110,13 @@ def main():
                 lpath="./",
                 excludes=excludes)
 
-    logger.info("Server: {}".format(conf.rserver))
-    logger.info("Path (remote): {}".format(conf.rpath))
+    logger.info("remote: {} {}".format(conf.rserver, conf.rpath))
+
+    # execute clean command
+    if config.has_option(BASIC_SECTION_NAME, "clean_cmd"):
+        clean_cmd = config.get(BASIC_SECTION_NAME, "clean_cmd")
+        logger.info("clean local tree via command: '{}'".format(clean_cmd))
+        subprocess.check_call(['/bin/sh', '-c', clean_cmd])
 
     rsync_push(conf)
 
