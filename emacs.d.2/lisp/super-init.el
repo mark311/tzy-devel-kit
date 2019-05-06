@@ -77,6 +77,7 @@
 
 ;; 调用recompile进行项目编译构建
 (global-set-key (kbd "C-c p c") 'my/recompile)
+(global-set-key (kbd "C-c p C") 'compile)
 
 
 ;; --------------------------------------------------------------------
