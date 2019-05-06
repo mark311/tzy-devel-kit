@@ -79,9 +79,16 @@ def remote_compile(conf, command):
         exit(rc)
 
 def main():
+    # find working dir
+    workdir = os.getcwd()
+    while not os.path.exists(os.path.join(workdir, CONFFILE_NAME)):
+        workdir = os.path.dirname(workdir.rstrip('/'))
+        if workdir == '/':
+            raise Exception("can't search {} in all upper level directories from".format(os.getcwd()))
+    os.chdir(workdir)
+    logger.info("workdir: {}".format(workdir))
+
     # read configuration file
-    if not os.path.isfile(CONFFILE_NAME):
-        raise Exception("can't find {} in current directory".format(CONFFILE_NAME))
     config = ConfigParser.ConfigParser()
     with open(CONFFILE_NAME, 'r') as fin:
         config.readfp(fin)
