@@ -71,7 +71,13 @@ def remote_compile(conf, command):
     # see: https://unix.stackexchange.com/questions/103699/kill-process-spawned-by-ssh-when-ssh-dies
     ssh_cmd += ['-t', '-t']
 
-    ssh_cmd += [conf.rserver, "cd {}; {}".format(conf.rpath, command)]
+    # with ssh option '-t', bash will not load ~/.bashrc, here we do it explicitly.
+    prepare_script = "source ~/.bashrc;"
+
+    # change current directory to user specified path on remote server
+    prepare_script += "cd {};".format(conf.rpath)
+
+    ssh_cmd += [conf.rserver, prepare_script + command]
     logger.info('execute compile command: {}'.format(join_command_list(ssh_cmd)))
 
     rc = subprocess.call(ssh_cmd)
