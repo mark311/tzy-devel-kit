@@ -10,6 +10,7 @@ co = checkout
 untracked = ls-files --others --exclude-standard
 
 logx = log --graph --format=format:'%C(bold blue)%h%C(reset) -%C(bold yellow)%d%C(reset) %C(white)%s%C(reset)' -n 15
+logxf = log --graph --format=format:'%C(bold blue)%h%C(reset) -%C(bold yellow)%d%C(reset) %C(white)%s%C(reset)' -n 15 --first-parent
 logxd = log --date=short --graph --format=format:'%C(bold blue)%h%C(reset) - %C(green)(%cd/%an)%C(reset)%C(bold yellow)%d%C(reset) %C(white)%s%C(reset)' -n 15
 
 [merge]
