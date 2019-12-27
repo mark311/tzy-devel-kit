@@ -9,8 +9,6 @@
 (require 'helm-config)  ;; package helm
 (require 'linum-off)    ;; package linum-off
 (require 'yasnippet)    ;; package yasnippet
-(autoload 'helm-gtags-mode "helm-gtags" "" t)  ;; package helm-gtags
-(add-hook 'c-mode-common-hook 'helm-gtags-mode)
 
 ;; --------------------------------------------------------------------
 ;; Personal Scripts
@@ -138,9 +136,6 @@
 ;; Don't show welcome buffer
 (setq inhibit-startup-message t)
 
-;; Update gtags database when source code changes
-(setq helm-gtags-auto-update t)
-
 ;; Line number format
 (setq linum-format "%4d  ")
 
@@ -163,16 +158,6 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((gnuplot . t)))
-
-;; Need gxref package
-
-(require 'gxref)
-(defun gxref-xref-backend-fallthrough ()
-  "Gxref backend for Xref. If no Gtags database found, fall
-  through and use next backend"
-  (if (gxref--find-project-root) 'gxref nil))
-
-(add-to-list 'xref-backend-functions 'gxref-xref-backend-fallthrough)
 
 ;; Set Org mode executable languages
 ;; see http://orgmode.org/org.html#Languages
