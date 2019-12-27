@@ -51,4 +51,36 @@ to be `insert-parentheses', and C-u (prefix with 4) to be
       (delete-pair)
     (insert-parentheses)))
 
+(defun find-deepest-ancestor-directory-containing-file (file-name &optional dir)
+  ""
+  (setq dir (or dir default-directory))
+  (or (directory-name-p dir) (error "'dir' should be directory name"))
+  (while (and (not (file-exists-p (concat dir file-name)))
+              (not (equal dir "/")))
+    (setq dir (file-name-as-directory (expand-file-name (concat dir "..")))))
+  (if (file-exists-p (concat dir file-name)) dir nil))
+
+(defun jgrep (regexp &optional files confirm)
+  "Like \\[rgrep], except use .RsyncCompileRemotes 's directory
+as search root directory"
+  (interactive
+   (progn
+     (grep-compute-defaults)
+     (cond
+      ((and grep-find-command (equal current-prefix-arg '(16)))
+       (list (read-from-minibuffer "Run: " grep-find-command
+				   nil nil 'grep-find-history)))
+      ((not grep-find-template)
+       (error "my-utils.el: No `grep-find-template' available"))
+      (t (let* ((regexp (grep-read-regexp))
+		(files (grep-read-files regexp))
+		(confirm (equal current-prefix-arg '(4))))
+	   (list regexp files confirm))))))
+  (let ((dir (or (find-deepest-ancestor-directory-containing-file ".RsyncCompileRemotes")
+                 (find-deepest-ancestor-directory-containing-file ".git"))))
+    (if (not dir)
+        (error "my-utils.el: No .RsyncCompileRemotes found"))
+    (rgrep regexp files dir confirm)))
+
+
 (provide 'my-utils)

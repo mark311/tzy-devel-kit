@@ -246,6 +246,27 @@
    (quote
     (".go" ".org" ".[ch]\\(\\+\\+\\|pp\\|c\\|h\\|xx\\)?" ".tex\\(i\\(nfo\\)?\\)?" ".el" ".emacs" ".l" ".lsp" ".p" ".java" ".js" ".f\\(90\\|77\\|or\\)?" ".ad[abs]" ".p[lm]" ".tcl" ".m" ".scm" ".pm" ".py" ".g" ".s?html" ".ma?k" "[Mm]akefile\\(\\.in\\)?")))
 
+ ;; 删掉了与c/c++相关的默认的配置，仅仅保留cchh一项。目的是为了让cchh
+ ;; 被优先匹配到，而不需要手动输入。
+ ;;
+ ;;     ("ch" .    "*.[ch]")
+ ;;     ("c" .     "*.c")
+ ;;     ("cc" .    "*.cc *.cxx *.cpp *.C *.CC *.c++")
+ ;;   * ("cchh" .  "*.cc *.[ch]xx *.[ch]pp *.[CHh] *.CC *.HH *.[ch]++")
+ ;;     ("hh" .    "*.hxx *.hpp *.[Hh] *.HH *.h++")
+ ;;     ("h" .     "*.h")
+ ;;
+ '(grep-files-aliases
+   (quote
+    (("all" . "* .[!.]* ..?*")
+     ("el" . "*.el")
+     ("cchh" . "*.cc *.[ch]xx *.[ch]pp *.[CHh] *.CC *.HH *.[ch]++")
+     ("l" . "[Cc]hange[Ll]og*")
+     ("m" . "[Mm]akefile*")
+     ("tex" . "*.tex")
+     ("texi" . "*.texi")
+     ("asm" . "*.[sS]"))))
+
  )
 
 ;; --------------------------------------------------------------------
