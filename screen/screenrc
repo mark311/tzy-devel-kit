@@ -1,4 +1,14 @@
-~/.screenrc
 escape ^o^o
-caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= @%H - %Y-%m-%d %c"
 
+# String-Escapes
+# https://www.gnu.org/software/screen/manual/html_node/String-Escapes.html#String-Escapes
+#
+caption always "%{= kw}%-w%{= BW}%n %t%{-}%+w %-= %`"
+
+# backtick 后面的0是序号，表示上面第一个出现的%`将被替换成一个命令的执行结果。
+# 30 30 分别是lifespan和autorefresh，控制刷新的时间。
+#
+# $PPID是bash的parent pid，正好对应于screen -ls中当前session的pid，用
+# 此方法找到当前的session name。 参考： https://superuser.com/a/212520
+#
+backtick 0 30 30 sh -c 'screen -ls | grep $PPID'
