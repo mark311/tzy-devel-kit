@@ -58,6 +58,7 @@
 ;; - 窗口相关功能           C-c w
 ;; - 文件相关功能           C-c f
 ;; - 项目相关功能           C-c p
+;; - Git相关功能            C-c g
 ;; --------------------------------------------------------------------
 
 ;; speedbar激活的时候，右手一般预先已经挪到了鼠标或触摸板上，激活的操
@@ -77,6 +78,13 @@
 (global-set-key (kbd "C-c p c") 'my/recompile)
 (global-set-key (kbd "C-c p C") 'rsync-compile)
 
+;; magit相关
+(global-set-key (kbd "C-c g g") 'magit-status)
+(global-set-key (kbd "C-c g u") 'magit-diff-unstaged)
+(global-set-key (kbd "C-c g s") 'magit-diff-staged)
+(global-set-key (kbd "C-c g b") 'magit-branch-popup)
+(global-set-key (kbd "C-c g B") 'magit-blame)
+(global-set-key (kbd "C-c g l") 'magit-log-popup)
 
 ;; --------------------------------------------------------------------
 ;; Mode局部键位绑定
