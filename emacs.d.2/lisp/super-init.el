@@ -186,6 +186,11 @@
 (setq org-ditaa-jar-path "~/.emacs.d/java/ditaa0_9.jar")
 (setq org-plantuml-jar-path "~/.emacs.d/java/plantuml.jar")
 
+;; markdown-preview css
+(setq markdown-preview-stylesheets
+      ;; Aone markdown css
+      (list "https://g.alicdn.com/platform/lib/1.2.2/ckeditor/contents.css"))
+
 ;; --------------------------------------------------------------------
 ;; Modes Activations
 ;; --------------------------------------------------------------------
@@ -260,6 +265,9 @@
      ("texi" . "*.texi")
      ("asm" . "*.[sS]"))))
 
+ ;; markdown processor
+ ;; downloaded at https://daringfireball.net/projects/markdown/
+ '(markdown-command "~/.emacs.d/misc/Markdown_1.0.1/Markdown.pl")
  )
 
 ;; --------------------------------------------------------------------
