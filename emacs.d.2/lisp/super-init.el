@@ -188,8 +188,9 @@
 
 ;; markdown-preview css
 (setq markdown-preview-stylesheets
-      ;; Aone markdown css
-      (list "https://g.alicdn.com/platform/lib/1.2.2/ckeditor/contents.css"))
+      ;; edit markdown-preview.css at
+      ;; "emacs.d.2/misc/markdown-preview.css" under this git repo
+      (list "http://markta31.oss-cn-hangzhou.aliyuncs.com/share/markdown-preview.css"))
 
 ;; --------------------------------------------------------------------
 ;; Modes Activations
