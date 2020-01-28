@@ -207,6 +207,11 @@
 ;; Custom Variables
 ;; --------------------------------------------------------------------
 (custom-set-variables
+ ;; To make dabbrev-expand case sensitive. For details, see *info*
+ ;; page of emacs: (emacs)Top > Abbrevs > Dabbrev Customization
+ '(dabbrev-case-replace nil)
+ '(dabbrev-case-fold-search nil)
+
  ;; In GUI mode, don't show scroll-bar and tool-bar, make GUI cleaner.
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
