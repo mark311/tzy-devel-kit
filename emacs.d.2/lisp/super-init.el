@@ -66,7 +66,7 @@
 (global-set-key (kbd "C-c w w") 'speedbar-get-focus)
 
 ;; 激活magit的主界面
-(global-set-key (kbd "C-c w g") 'magit-status)
+(global-set-key (kbd "C-c w g") 'magit-status) ; deprecated
 
 ;; revert-buffer
 (global-set-key (kbd "C-c f r") 'revert-buffer)
@@ -75,8 +75,10 @@
 (global-set-key (kbd "C-c f w") 'delete-trailing-whitespace)
 
 ;; 调用recompile进行项目编译构建
-(global-set-key (kbd "C-c p c") 'my/recompile)
-(global-set-key (kbd "C-c p C") 'rsync-compile)
+(global-set-key (kbd "C-c p c") 'my/recompile)  ; deprecated
+(global-set-key (kbd "C-c p C") 'rsync-compile) ; deprecated
+(global-set-key (kbd "C-c c c") 'my/recompile)
+(global-set-key (kbd "C-c c C") 'rsync-compile)
 
 ;; magit相关
 (global-set-key (kbd "C-c g g") 'magit-status)
@@ -85,6 +87,7 @@
 (global-set-key (kbd "C-c g b") 'magit-branch-popup)
 (global-set-key (kbd "C-c g B") 'magit-blame)
 (global-set-key (kbd "C-c g l") 'magit-log-popup)
+(global-set-key (kbd "C-c g L") 'magit-log-buffer-file)
 
 ;; --------------------------------------------------------------------
 ;; Mode局部键位绑定
