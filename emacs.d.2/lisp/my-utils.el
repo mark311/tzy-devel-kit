@@ -1,3 +1,5 @@
+(require 'subr-x)
+
 (defun my-utils-append-exec-path (path)
   "Append path to both the 'PATH' environment variable and
   the `exec-path' variable."
@@ -82,5 +84,33 @@ as search root directory"
         (error "my-utils.el: No .RsyncCompileRemotes found"))
     (rgrep regexp files dir confirm)))
 
+(defun my/template-replace-region (pattern start end)
+  (let ((begin nil)
+        (deleted-line nil))
+    ;; remove last "\n" of pattern if exists
+    (if (equal "\n" (seq-subseq pattern -1 (length pattern)))
+        (setq pattern (seq-subseq pattern 0 -1)))
+
+    (while (> end start)
+      ;; let begin,end be the region of last line
+      (goto-char end)
+      (forward-line -1)
+      (setq begin (point))
+
+      ;; delete last line and insert the pattern, the 'end' points to
+      ;; the end of inserted pattern.
+      (setq deleted-line (delete-and-extract-region begin end))
+      (insert (replace-regexp-in-string "\\{\\}"
+                                        (string-trim-right deleted-line)
+                                        pattern))
+      (insert "\n")
+
+      (setq end begin))))
+
+(defun my/template-replace ()
+  ""
+  (interactive)
+  (let ((pattern (current-kill 0 t)))
+    (my/template-replace-region pattern (region-beginning) (region-end))))
 
 (provide 'my-utils)
