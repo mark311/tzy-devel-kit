@@ -26,13 +26,24 @@ window in the current frame, even if there has already a
     (select-window (or (my/find-window-by-name "*compilation*")
                        (selected-window)))
     (funcall compile-func)
-    (end-of-buffer)
     (select-frame-set-input-focus last-frame)))
 
 (defun my/recompile ()
   "Re-compile using last *compilation* buffer (don't create a new one)"
   (interactive)
-  (my/jump-to-compilation-and-do (lambda () (recompile))))
+  (my/jump-to-compilation-and-do
+   (lambda ()
+     (recompile)
+     (end-of-buffer)
+     )))
+
+(defun my/goto-first-compile-error ()
+  "Jump to *compilation* window/frame, and goto the first error"
+  (interactive)
+  (my/jump-to-compilation-and-do
+   (lambda ()
+     (beginning-of-buffer)
+     (compilation-next-error 1))))
 
 (defun rsync-compile-target (target)
   "Run 'rsync-compile' command with given TARGET"
