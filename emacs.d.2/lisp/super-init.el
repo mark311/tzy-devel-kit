@@ -80,6 +80,7 @@
 (global-set-key (kbd "C-c c c") 'my/recompile)
 (global-set-key (kbd "C-c c C") 'rsync-compile)
 (global-set-key (kbd "C-c c e") 'my/goto-first-compile-error)
+(global-set-key (kbd "C-c c k") 'my/kill-compilation)
 
 ;; magit相关
 (global-set-key (kbd "C-c g g") 'magit-status)

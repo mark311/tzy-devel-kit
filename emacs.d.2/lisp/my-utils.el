@@ -45,6 +45,13 @@ window in the current frame, even if there has already a
      (beginning-of-buffer)
      (compilation-next-error 1))))
 
+(defun my/kill-compilation ()
+  "Jump to *compilation* window/frame, and call (kill-compilation)"
+  (interactive)
+  (my/jump-to-compilation-and-do
+   (lambda ()
+     (kill-compilation))))
+
 (defun rsync-compile-target (target)
   "Run 'rsync-compile' command with given TARGET"
   (interactive "sTarget: ")
