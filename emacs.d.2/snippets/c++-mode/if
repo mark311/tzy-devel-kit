@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: if statement
+# key: if
+# expand-env: ((yas-indent-line 'auto) (yas-also-auto-indent-first-line t) (yas-wrap-around-region t))
+# --
+if (${1:1})
+{
+$0}

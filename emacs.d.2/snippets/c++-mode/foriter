@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: for-loop using iterator
+# key: foriter
+# --
+for (typeof(${1:container}.begin()) ${2:iter} = $1.begin();
+     $2 != $1.end(); ++$2)
+{
+    $0
+}

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: create shared_ptr typedef for class
+# key: sharedptrdef
+# expand-env: ((yas-indent-line 'fixed))
+# --
+typedef std::tr1::shared_ptr<${1:Foo}> $1Ptr;

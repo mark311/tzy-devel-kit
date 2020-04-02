@@ -91,6 +91,11 @@
 (global-set-key (kbd "C-c g l") 'magit-log-popup)
 (global-set-key (kbd "C-c g L") 'magit-log-buffer-file)
 
+;; yas-snippets相关
+(global-set-key (kbd "C-M-/") 'yas-expand)
+(global-set-key (kbd "C-c y s") 'yas-insert-snippet)
+(global-set-key (kbd "C-c y n") 'yas-new-snippet)
+
 ;; --------------------------------------------------------------------
 ;; Mode局部键位绑定
 ;; --------------------------------------------------------------------

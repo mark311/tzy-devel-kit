@@ -1,0 +1,31 @@
+# -*- mode: snippet -*-
+# name: create the header file for a new class
+# key: newclass
+# expand-env: ((yas-indent-line 'fixed))
+# --
+#ifndef ${1:_`(upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))`_H_}
+#define $1
+
+class ${4:Foo}
+{
+public:
+    $4();
+    ~$4();
+
+private:
+};
+
+$0
+/* move lines below into .cpp file */
+
+#include "`(file-name-nondirectory (buffer-file-name))`"
+
+$4::$4()
+{
+}
+
+$4::~$4()
+{
+}
+
+#endif
