@@ -217,6 +217,9 @@
 ;; Custom Variables
 ;; --------------------------------------------------------------------
 (custom-set-variables
+ ;; Default themes
+ '(custom-enabled-themes (quote (zhiyang-v1)))
+
  ;; To make dabbrev-expand case sensitive. For details, see *info*
  ;; page of emacs: (emacs)Top > Abbrevs > Dabbrev Customization
  '(dabbrev-case-replace nil)
@@ -290,28 +293,8 @@
 ;; Custom Faces
 ;; --------------------------------------------------------------------
 (custom-set-faces
-
- ;; 各种界面颜色的配置，各种界面保持协调，包括全局背景、diff、helm、org等。
- ;; 如果要修改，需要整体上评估色彩的协调性。
- '(diff-added ((t (:inherit diff-changed :foreground "green"))))
- '(diff-refine-added ((t (:inherit diff-refine-change))))
- '(diff-refine-change ((t (:weight bold))))
- '(diff-refine-changed ((t (:inverse-video t))))
- '(diff-refine-removed ((t (:inherit diff-refine-change))))
- '(diff-removed ((t (:inherit diff-changed :foreground "red"))))
- '(font-lock-builtin-face ((t (:foreground "white"))))
- '(helm-buffer-directory ((t (:background "black" :foreground "#5c5cff"))))
- '(helm-ff-directory ((t (:background "black" :foreground "#5c5cff"))))
- '(helm-selection ((t (:background "#3a3a3a" :underline t))))
- '(org-table ((t (:foreground "green"))))
- '(region ((t (:background "#00008e"))))
-
- ;; SimHei (仿黑) 是Mac下面的一种中文正好是英文两倍宽的字体
- ;; 但因为这种字体显示不够圆润，对眼睛不好，所以暂不用它。
- ;'(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 160 :width normal :foundry "nil" :family "SimHei")))))
-
  ;; Monaco 14px 是一种相对圆润的字体，与我配置的Iterm2中的字体保持一致
- '(default ((t (:inherit nil :stipple nil :background "Black" :foreground "White" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "default" :family "Monaco"))))
+ '(default ((t (:height 140 :width normal))))
  )
 
 (provide 'super-init)
