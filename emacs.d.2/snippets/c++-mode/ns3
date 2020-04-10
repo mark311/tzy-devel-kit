@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: 3 level namespace
+# key: ns3
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region t))
+# --
+namespace ${1:name1}
+{
+namespace ${2:name2}
+{
+namespace ${3:name3}
+{
+
+$0
+}
+}
+}
