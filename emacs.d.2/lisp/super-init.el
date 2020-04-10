@@ -52,6 +52,10 @@
 (global-set-key (kbd "M-s h h") 'highlight-symbol-at-point)
 (global-set-key (kbd "M-(") 'my/insert-parentheses)
 
+;; expand
+(global-set-key (kbd "M-s-/") 'dabbrev-expand)
+(global-set-key (kbd "M-/") 'company-complete)
+
 ;; --------------------------------------------------------------------
 ;; 功能型的全局键位绑定      C-c <letter>
 ;;
@@ -210,8 +214,7 @@
 (helm-mode)
 (global-linum-mode)
 (yas-global-mode 1)
-
-
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; --------------------------------------------------------------------
 ;; Custom Variables
@@ -224,6 +227,13 @@
  ;; page of emacs: (emacs)Top > Abbrevs > Dabbrev Customization
  '(dabbrev-case-replace nil)
  '(dabbrev-case-fold-search nil)
+
+ ;; company-mode configuration
+ '(company-auto-complete t)
+ '(company-backends (quote (company-dabbrev company-etags)))
+ '(company-dabbrev-downcase nil)
+ '(company-dabbrev-ignore-case t)
+ '(company-show-numbers (quote (quote t)))
 
  ;; In GUI mode, don't show scroll-bar and tool-bar, make GUI cleaner.
  '(scroll-bar-mode nil)
