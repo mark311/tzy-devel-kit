@@ -234,6 +234,8 @@
  '(company-dabbrev-downcase nil)
  '(company-dabbrev-ignore-case t)
  '(company-show-numbers (quote (quote t)))
+ '(company-idle-delay nil)              ; don't prompt if idle
+ '(company-dabbrev-char-regexp "\\sw\\|\\s_") ; allow search word characters and underscope (_)
 
  ;; In GUI mode, don't show scroll-bar and tool-bar, make GUI cleaner.
  '(scroll-bar-mode nil)
