@@ -223,6 +223,10 @@
  ;; Default themes
  '(custom-enabled-themes (quote (zhiyang-v1)))
 
+ ;; Helm:
+ ;; show longer file name in helm buffer, the original is 20
+ '(helm-buffer-max-length 40)
+
  ;; To make dabbrev-expand case sensitive. For details, see *info*
  ;; page of emacs: (emacs)Top > Abbrevs > Dabbrev Customization
  '(dabbrev-case-replace nil)
