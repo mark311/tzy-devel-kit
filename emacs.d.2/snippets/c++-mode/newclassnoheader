@@ -1,0 +1,27 @@
+# -*- mode: snippet -*-
+# name: create new class
+# key: newclassnoheader
+# expand-env: ((yas-indent-line 'fixed))
+# --
+
+class ${1:Foo}
+{
+public:
+    $1();
+    ~$1();
+
+private:
+};
+
+$0
+/* move lines below into .cpp file */
+
+#include "`(file-name-nondirectory (buffer-file-name))`"
+
+$1::$1()
+{
+}
+
+$1::~$1()
+{
+}
