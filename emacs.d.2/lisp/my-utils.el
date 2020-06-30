@@ -52,15 +52,28 @@ window in the current frame, even if there has already a
    (lambda ()
      (kill-compilation))))
 
-(defun rsync-compile-target (target)
-  "Run 'rsync-compile' command with given TARGET"
+(defun jump-and-rsync-compile-target (target)
   (interactive "sTarget: ")
-  (compile (concat "rsync-compile " (or target ""))))
+  (let ((current-working-directory default-directory))
+    (my/jump-to-compilation-and-do
+     (lambda ()
+       (cd current-working-directory)
+       (compile (concat "rsync-compile " (or target "")))
+       (end-of-buffer)))))
 
 (defun rsync-compile ()
   "Run 'rsync-compile' command"
   (interactive)
   (compile (concat "rsync-compile")))
+
+(defun jump-and-rsync-compile ()
+  (interactive)
+  (let ((current-working-directory default-directory))
+    (my/jump-to-compilation-and-do
+     (lambda ()
+       (cd current-working-directory)
+       (compile (concat "rsync-compile"))
+       (end-of-buffer)))))
 
 (defun my/insert-parentheses (arg)
   "overwrite insert-parentheses, let normal call to this command

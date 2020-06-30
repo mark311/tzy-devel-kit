@@ -81,8 +81,8 @@
 ;; 调用recompile进行项目编译构建
 (global-set-key (kbd "C-c p c") 'my/recompile)  ; deprecated
 (global-set-key (kbd "C-c p C") 'rsync-compile) ; deprecated
-(global-set-key (kbd "C-c c c") 'my/recompile)
-(global-set-key (kbd "C-c c C") 'rsync-compile)
+(global-set-key (kbd "C-c c c") 'jump-and-rsync-compile)
+(global-set-key (kbd "C-c c C") 'jump-and-rsync-compile-target)
 (global-set-key (kbd "C-c c e") 'my/goto-first-compile-error)
 (global-set-key (kbd "C-c c k") 'my/kill-compilation)
 

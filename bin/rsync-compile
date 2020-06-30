@@ -114,6 +114,13 @@ def main():
     elif config.has_option(BASIC_SECTION_NAME, "target"):
         target = config.get(BASIC_SECTION_NAME, "target")
 
+    # --list for list all target
+    if target == '--list':
+        targets = set(config.sections()) - set([BASIC_SECTION_NAME])
+        print "\ntargets:\n"
+        print "".join(["   %s\n" % target for target in targets])
+        return 0
+
     if not config.has_option(target, 'cmd'):
         raise Exception('target %s does not contain "cmd" option' % target)
     command = config.get(target, 'cmd')
@@ -135,6 +142,9 @@ def main():
 
     if command is not None:
         remote_compile(conf, command)
+
+    logger.info("finished at local directory: {}, for target {}".format(os.path.abspath(conf.lpath), repr(target)))
+
 
 if __name__ == "__main__":
     exit(main())
