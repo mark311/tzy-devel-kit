@@ -71,6 +71,9 @@ window in the current frame, even if there has already a
   (let ((current-working-directory default-directory))
     (my/jump-to-compilation-and-do
      (lambda ()
+       (ignore-errors
+         (kill-compilation))
+       (sleep-for 0.2)
        (cd current-working-directory)
        (compile (concat "rsync-compile"))
        (end-of-buffer)))))
