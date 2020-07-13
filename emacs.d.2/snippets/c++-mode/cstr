@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: const std::string&
+# key: cstr
+# --
+const std::string&

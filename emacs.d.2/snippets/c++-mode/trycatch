@@ -6,5 +6,7 @@
 try
 {
 $0
-} catch (${1:ExceptionType}& e) {
+}
+catch (${1:ExceptionType}& e)
+{
 }

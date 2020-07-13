@@ -1,0 +1,7 @@
+# key: getter
+# name: generate getter
+# --
+${2:ReturnType} Get${1:Foo}() const
+{
+    return m$1;
+}
