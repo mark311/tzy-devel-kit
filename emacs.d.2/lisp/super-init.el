@@ -1,4 +1,5 @@
 (require 'package)
+(require 'ansi-color)
 ;(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
@@ -206,6 +207,11 @@
       ;; edit markdown-preview.css at
       ;; "emacs.d.2/misc/markdown-preview.css" under this git repo
       (list "http://markta31.oss-cn-hangzhou.aliyuncs.com/share/markdown-preview.css"))
+
+(defun my/colorize-compilation-buffer ()
+  (ansi-color-apply-on-region compilation-filter-start (point)))
+(add-hook 'compilation-filter-hook 'my/colorize-compilation-buffer)
+
 
 ;; --------------------------------------------------------------------
 ;; Modes Activations
