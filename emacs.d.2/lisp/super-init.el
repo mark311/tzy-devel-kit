@@ -40,6 +40,7 @@
 (global-set-key (kbd "C-M-h") 'backward-kill-word)  ;; for compatibility of GUI version
 
 ;; 
+(global-unset-key (kbd "C-x C-c"))      ; avoid closing Emacs unintentionaly
 (global-set-key (kbd "C-x C-h") 'helm-mini)
 (global-set-key (kbd "C-x C-o") 'other-window)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
