@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: generate setter
+# key: setter
+# --
+void Set${1:Foo}(const ${2:T}& value)
+{
+    m$1 = value;
+}
