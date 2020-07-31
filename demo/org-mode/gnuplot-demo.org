@@ -1,0 +1,70 @@
+
+* Data Table
+
+#+tblname: demo-data-table
+| # | categories | col-1 | col-2 | col-3 |
+|---+------------+-------+-------+-------|
+| 1 | category-a |  2.96 |  3.74 |  5.30 |
+| 2 | category-b |  3.28 |  3.39 |  5.20 |
+| 3 | category-c |  4.85 |  7.01 | 10.33 |
+
+* Charts
+
+** Bar Chart
+
+#+begin_src gnuplot :var data=demo-data-table :exports results :file bar-chart.png
+
+set title "Bar Chart Demo"
+
+set xlabel "Categories"
+set xrange [-0.5:2.5]
+set xtics 1
+
+set ylabel "Values"
+set yrange [0.0:15.0]
+set ytics 1
+
+
+set boxwidth 1
+set style data histograms
+set boxwidth 0.6
+set style fill solid
+
+plot data using 3:xtic(2) title 'col-1' \
+   , data using 4:xtic(2) title 'col-2' \
+   , data using 5:xtic(2) title 'col-3' \
+
+#+end_src
+
+#+RESULTS:
+[[file:bar-chart.png]]
+
+
+** Line Chart
+
+#+begin_src gnuplot :var data=demo-data-table :exports results :file line-chart.png
+
+set title "Line Chart Demo"
+
+set xlabel "Categories"
+set xrange [-0.5:2.5]
+set xtics 1
+
+set ylabel "Values"
+set yrange [0.0:15.0]
+set ytics 1
+
+
+set boxwidth 1
+set style data lines
+set boxwidth 0.6
+set style fill solid
+
+plot data using 3:xtic(2) title 'col-1' \
+   , data using 4:xtic(2) title 'col-2' \
+   , data using 5:xtic(2) title 'col-3' \
+
+#+end_src
+
+#+RESULTS:
+[[file:line-chart.png]]
