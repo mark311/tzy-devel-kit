@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: djexp
-# key: djexp
-# --
-{{ $0 }}
