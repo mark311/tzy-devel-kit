@@ -1,0 +1,30 @@
+.org-svg { width: 70%; }        /* svg的图表不要太大，org默认90% */
+
+body {
+    width: 800px;
+    margin: auto;
+}
+
+table {
+    margin: auto;               /* 让表格居中显示 */
+    font-family: verdana,arial,sans-serif;
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #666666;
+    border-collapse: collapse;
+}
+table th {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #dedede;
+}
+table td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #ffffff;
+}

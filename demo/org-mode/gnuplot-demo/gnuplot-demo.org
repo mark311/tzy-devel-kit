@@ -1,3 +1,5 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="custom-org-view.css" />
+
 
 * Data Table
 
@@ -12,7 +14,7 @@
 
 ** Bar Chart
 
-#+begin_src gnuplot :var data=demo-data-table :exports results :file bar-chart.png
+#+begin_src gnuplot :var data=demo-data-table :exports results :file bar-chart.svg
 
 set title "Bar Chart Demo"
 
@@ -37,12 +39,12 @@ plot data using 3:xtic(2) title 'col-1' \
 #+end_src
 
 #+RESULTS:
-[[file:bar-chart.png]]
+[[file:bar-chart.svg]]
 
 
 ** Line Chart
 
-#+begin_src gnuplot :var data=demo-data-table :exports results :file line-chart.png
+#+begin_src gnuplot :var data=demo-data-table :exports results :file line-chart.svg
 
 set title "Line Chart Demo"
 
@@ -54,17 +56,22 @@ set ylabel "Values"
 set yrange [0.0:15.0]
 set ytics 1
 
+set dashtype 5 ".. "
+
+set linestyle 1 lc rgb "dark-violet"   lw 1 dashtype ".. "
+set linestyle 2 lc rgb "sea-green"     lw 1
 
 set boxwidth 1
-set style data lines
 set boxwidth 0.6
 set style fill solid
 
-plot data using 3:xtic(2) title 'col-1' \
-   , data using 4:xtic(2) title 'col-2' \
-   , data using 5:xtic(2) title 'col-3' \
+plot data using 3:xtic(2) with lines lt 1 title 'col-1' \
+    ,data using 4:xtic(2) with lines lt 2 title 'col-2' \
+    ,data using 5:xtic(2) with lines lt 3 title 'col-3'
 
 #+end_src
 
+#+ATTR_HTML: :align left;
 #+RESULTS:
-[[file:line-chart.png]]
+[[file:line-chart.svg]]
+
