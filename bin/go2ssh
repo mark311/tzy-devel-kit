@@ -17,6 +17,12 @@ import sys,os
 import argparse
 import ConfigParser
 
+def get_default(config, section, option, default_value):
+    if config.has_option(section, option):
+        return config.get(section, option)
+    else:
+        return default_value
+
 def make_choice(message, choices):
     numbered_choices = ["[{}] {}".format(i+1, ch) for i, ch in enumerate(choices)]
     print "\n  ".join([message] + numbered_choices)
@@ -43,6 +49,7 @@ def main():
             "id": id,
             "target": config.get(id, "target"),
             "desc": config.get(id, "desc"),
+            "port_forward": get_default(config, id, "port_forward", "0"),
         } for id in config.sections()
     ]
 
@@ -51,6 +58,10 @@ def main():
     chosen_target = targets[i-1]
 
     cmd = ['ssh', chosen_target['target']]
+    if chosen_target["port_forward"] > 0:
+        cmd += ['-D', chosen_target["port_forward"]]
+
+    print chosen_target
     print cmd
     os.execvp(cmd[0], cmd)
 
