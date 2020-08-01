@@ -230,6 +230,10 @@
  ;; Default themes
  '(custom-enabled-themes (quote (zhiyang-v1)))
 
+ ;; Org-mode
+ ;; 不需要在org export的时候确认是否执行脚本（比如gnuplot等）
+ '(org-confirm-babel-evaluate nil)
+
  ;; Helm:
  ;; show longer file name in helm buffer, the original is 20
  '(helm-buffer-max-length 40)
