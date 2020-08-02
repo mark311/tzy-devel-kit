@@ -49,7 +49,7 @@ def main():
             "id": id,
             "target": config.get(id, "target"),
             "desc": config.get(id, "desc"),
-            "port_forward": get_default(config, id, "port_forward", "0"),
+            "port_forward": get_default(config, id, "port_forward", None),
         } for id in config.sections()
     ]
 
@@ -58,7 +58,7 @@ def main():
     chosen_target = targets[i-1]
 
     cmd = ['ssh', chosen_target['target']]
-    if chosen_target["port_forward"] > 0:
+    if chosen_target["port_forward"] is not None:
         cmd += ['-D', chosen_target["port_forward"]]
 
     print chosen_target
