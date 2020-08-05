@@ -147,4 +147,11 @@ as search root directory"
   (let ((pattern (current-kill 0 t)))
     (my/template-replace-region pattern (region-beginning) (region-end))))
 
+;; 将当前选中区域（或当前行）的文本作为shell script，调用 async-shell-command执行。
+(defun my/execute-shell-command ()
+  (interactive)
+  (if (use-region-p)
+      (async-shell-command (buffer-substring (region-beginning) (region-end)))
+    (async-shell-command (thing-at-point 'line t))))
+
 (provide 'my-utils)

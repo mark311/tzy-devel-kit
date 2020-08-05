@@ -142,6 +142,13 @@
               (global-set-key [double-wheel-left] (lambda () (interactive) (scroll-right 2)))
               (global-set-key [trible-wheel-left] (lambda () (interactive) (scroll-right 4))))))
 
+;; C-x C-e 默认是执行 eval-last-sexp ，将它扩展到其他脚本，比如常用的
+;; bash, python
+(add-hook 'emacs-lisp-mode-hook
+          (lambda () (local-set-key (kbd "C-x C-e") 'eval-last-sexp)))
+
+(global-set-key (kbd "C-x C-e") 'my/execute-shell-command)
+
 ;; mouse
 (progn
   (global-set-key [wheel-down] (lambda () (interactive) (scroll-up 2)))
