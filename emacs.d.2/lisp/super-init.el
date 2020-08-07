@@ -67,6 +67,9 @@
 ;; - Git相关功能            C-c g
 ;; --------------------------------------------------------------------
 
+;; Org Agenda Activation
+(global-set-key (kbd "C-c a") 'org-agenda)
+
 ;; speedbar激活的时候，右手一般预先已经挪到了鼠标或触摸板上，激活的操
 ;; 作需要左手单手快速完成
 (global-set-key (kbd "C-c w w") 'speedbar-get-focus)
