@@ -26,7 +26,9 @@ import itertools
 import logging
 import ConfigParser
 
+RCR_HOME_DIR = os.path.expanduser("~/.RsyncCompileRemotes.d")
 CONFFILE_NAME = ".RsyncCompileRemotes"
+LAST_TARGET_FILE = ".last_target"
 BASIC_SECTION_NAME = ".basic"
 RSYNC_EXCLUDE_LIST = ['*.git', "*.idea", "*.iml", "TAGS", CONFFILE_NAME]
 
@@ -84,19 +86,51 @@ def remote_compile(conf, command):
     if rc != 0:
         exit(rc)
 
+def is_rcr_root_dir(dirpath):
+    return os.path.exists(os.path.join(dirpath, CONFFILE_NAME))
+
+def is_git_root_dir(dirpath):
+    return os.path.exists(os.path.join(dirpath, ".git"))
+
+def is_project_root_dir(dirpath):
+    return is_rcr_root_dir(dirpath) or is_git_root_dir(dirpath)
+
+def load_last_target(confdir):
+    filepath = os.path.join(confdir, LAST_TARGET_FILE)
+    if not os.path.exists(filepath):
+        return None
+    with open(filepath, 'r') as f:
+        return f.readline().strip()
+
+def save_last_target(confdir, target):
+    filepath = os.path.join(confdir, LAST_TARGET_FILE)
+    with open(filepath, 'w') as f:
+        print >>f, target
+
+
 def main():
     # find working dir
     workdir = os.getcwd()
-    while not os.path.exists(os.path.join(workdir, CONFFILE_NAME)):
+    while not is_project_root_dir(workdir):
         workdir = os.path.dirname(workdir.rstrip('/'))
         if workdir == '/':
             raise Exception("can't search {} in all upper level directories from".format(os.getcwd()))
     os.chdir(workdir)
     logger.info("workdir: {}".format(workdir))
 
+    confdir = workdir
+    if not is_rcr_root_dir(confdir):
+        dirname = os.path.basename(confdir)
+        # there exists the same name directory of current project directory in RCR_HOME_DIR
+        confdir = os.path.join(RCR_HOME_DIR, dirname)
+        if not is_rcr_root_dir(confdir):
+            raise Exception('.RsyncCompileRemotes can not found in either {} or {}'.format(workdir, confdir))
+
+    logger.info("found config file {}".format(os.path.join(confdir, CONFFILE_NAME)))
+
     # read configuration file
     config = ConfigParser.ConfigParser()
-    with open(CONFFILE_NAME, 'r') as fin:
+    with open(os.path.join(confdir, CONFFILE_NAME), 'r') as fin:
         config.readfp(fin)
     if not config.has_section(BASIC_SECTION_NAME):
         raise Exception("can't find section %s in %s".format(BASIC_SECTION_NAME, CONFFILE_NAME))
@@ -109,10 +143,15 @@ def main():
 
     # determine 'target'
     target = None
+    last_target = load_last_target(confdir)
     if len(sys.argv) >= 2:
         target = sys.argv[1]
+    elif last_target is not None:
+        target = last_target
     elif config.has_option(BASIC_SECTION_NAME, "target"):
         target = config.get(BASIC_SECTION_NAME, "target")
+    save_last_target(confdir, target)
+    logger.info("target: {}".format(target))
 
     # --list for list all target
     if target == '--list':
