@@ -244,6 +244,9 @@
  ;; 不需要在org export的时候确认是否执行脚本（比如gnuplot等）
  '(org-confirm-babel-evaluate nil)
 
+ ;; 高亮显示行尾空格字符
+ '(show-trailing-whitespace t)
+
  ;; Helm:
  ;; show longer file name in helm buffer, the original is 20
  '(helm-buffer-max-length 40)
