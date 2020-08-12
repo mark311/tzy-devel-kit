@@ -2983,7 +2983,7 @@
 	<key>LeftCommand</key>
 	<integer>2</integer>
 	<key>LeftOption</key>
-	<integer>7</integer>
+	<integer>2</integer>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>MaxVertically</key>
@@ -3036,11 +3036,13 @@
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
 	<string>368 386 799 448 0 0 1536 937 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>-1270 450 620 392 -1920 -48 1920 1057 </string>
+	<string>-1270 378 620 392 -1920 -120 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>-734 156 652 788 -1920 -48 1920 1057 </string>
+	<string>-1023 303 980 560 -1920 -120 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>192 314 652 503 0 0 1536 937 </string>
+	<string>-1039 32 1004 887 -1920 -120 1920 1057 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>136 358 1244 579 0 0 1536 937 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -4410,7 +4412,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>E49CF013-35FD-4CAB-9E30-8E981A77EDA1</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>4</integer>
+	<integer>9</integer>
 	<key>NoSyncNeverAskAboutSettingAlternateMouseScroll</key>
 	<true/>
 	<key>NoSyncNextAnnoyanceTime</key>
@@ -5156,9 +5158,11 @@
 	<key>QuitWhenAllWindowsClosed</key>
 	<false/>
 	<key>RightCommand</key>
-	<integer>3</integer>
-	<key>RightOption</key>
 	<integer>8</integer>
+	<key>RightOption</key>
+	<integer>3</integer>
+	<key>SUAutomaticallyUpdate</key>
+	<false/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
@@ -5168,11 +5172,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-04-10T01:47:34Z</date>
+	<date>2020-08-12T15:08:40Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUSkippedVersion</key>
-	<string>3.3.10beta3</string>
+	<string>3.4.0beta3</string>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
