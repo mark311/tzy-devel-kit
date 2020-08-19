@@ -342,6 +342,6 @@
 (custom-set-faces
  ;; Monaco 14px 是一种相对圆润的字体，与我配置的Iterm2中的字体保持一致
  '(default ((t (:height 140 :width normal))))
- )
+ '(idle-highlight ((t (:inherit lazy-highlight)))))
 
 (provide 'super-init)
