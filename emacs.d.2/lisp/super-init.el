@@ -237,6 +237,9 @@
 ;; 动高亮，移走后自动消失）
 (add-hook 'prog-mode-hook (lambda () (idle-highlight-mode t)))
 
+;; yaml文件开启缩进高亮
+(add-hook 'yaml-mode-hook (lambda () (highlight-indentation-mode t)))
+
 ;; --------------------------------------------------------------------
 ;; Custom Variables
 ;; --------------------------------------------------------------------
