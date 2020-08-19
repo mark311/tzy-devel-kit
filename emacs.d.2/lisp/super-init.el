@@ -40,7 +40,7 @@
 (define-key key-translation-map [?\C-h] [?\C-?])
 (global-set-key (kbd "C-M-h") 'backward-kill-word)  ;; for compatibility of GUI version
 
-;; 
+;;
 (global-unset-key (kbd "C-x C-c"))      ; avoid closing Emacs unintentionaly
 (global-set-key (kbd "C-x C-h") 'helm-mini)
 (global-set-key (kbd "C-x C-o") 'other-window)
@@ -232,6 +232,10 @@
 (global-linum-mode)
 (yas-global-mode 1)
 (add-hook 'after-init-hook 'global-company-mode)
+
+;; 为所有 programming modes 开启 idle-highlight-mode （光标处的单词自
+;; 动高亮，移走后自动消失）
+(add-hook 'prog-mode-hook (lambda () (idle-highlight-mode t)))
 
 ;; --------------------------------------------------------------------
 ;; Custom Variables
