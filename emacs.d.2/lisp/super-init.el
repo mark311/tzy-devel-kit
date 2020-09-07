@@ -84,12 +84,10 @@
 ;; delete white spaces
 (global-set-key (kbd "C-c f w") 'delete-trailing-whitespace)
 
-;; 调用recompile进行项目编译构建
-(global-set-key (kbd "C-c p c") 'my/recompile)  ; deprecated
-(global-set-key (kbd "C-c p C") 'rsync-compile) ; deprecated
-(global-set-key (kbd "C-c c c") 'jump-and-rsync-compile)
-(global-set-key (kbd "C-c c C") 'jump-and-rsync-compile-target)
-(global-set-key (kbd "C-c c e") 'my/goto-first-compile-error)
+;; 调用rsyncompile进行项目编译构建
+(global-set-key (kbd "C-c c c") 'rsync-compile-last)
+(global-set-key (kbd "C-c c C") 'rsync-compile-prompt)
+(global-set-key (kbd "C-c c e") 'my/goto-first-compile-error) ;; 和 C-x ` next-error对比看看哪个更实用？
 (global-set-key (kbd "C-c c k") 'my/kill-compilation)
 
 ;; magit相关
@@ -335,6 +333,23 @@
  ;; markdown processor
  ;; downloaded at https://daringfireball.net/projects/markdown/
  '(markdown-command "~/.emacs.d/misc/Markdown_1.0.1/Markdown.pl")
+
+ ;; `compile' / `recompile' function calls `display-buffer' to show
+ ;; *compilation* buffer, the following `display-buffer-alist' will
+ ;; affect the behavior of choosing frames to display.
+ ;;
+ ;; In details, for buffer named *compilation*, search all frames to
+ ;; find one which contains the *compilation* buffer already,
+ ;; otherwise starts a window in current selected frame.
+ '(display-buffer-alist
+   (quote
+    (("\\*compilation\\*" display-buffer-reuse-window
+      (reusable-frames . t)))))
+
+ ;; To make the *compilation* buffer scrolling to as output appears
+ ;; and stop scrolling at first error occur.
+ '(compilation-scroll-output (quote first-error))
+
  )
 
 ;; --------------------------------------------------------------------

@@ -185,5 +185,35 @@ def main():
     logger.info("finished at local directory: {}, for target {}".format(os.path.abspath(conf.lpath), repr(target)))
 
 
+def main_v2():
+    if len(sys.argv) < 6:
+        print "usage: PROGRAM --v2 RSERVER RPATH LPATH EXCLUDES COMPILE_CMDS"
+        return 1
+
+    logger.info("ARGS: %s" % repr(sys.argv))
+
+    # parse 'excludes' list
+    excludes = RSYNC_EXCLUDE_LIST
+    excludes = sys.argv[5].split(":")
+    excludes = RSYNC_EXCLUDE_LIST + excludes
+
+    server = sys.argv[2]
+    rpath = sys.argv[3]
+    lpath = os.path.expanduser(sys.argv[4])
+
+    conf = Conf(server, rpath, lpath, excludes)
+    command = sys.argv[6]
+
+    rsync_push(conf)
+
+    if command is not None:
+        remote_compile(conf, command)
+
+    logger.info("finished at local directory: {}, for command: {}".format(os.path.abspath(conf.lpath), repr(command)))
+
+
 if __name__ == "__main__":
-    exit(main())
+    if len(sys.argv) > 1 and sys.argv[1] == "--v2":
+        exit(main_v2())
+    else:
+        exit(main())
