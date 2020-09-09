@@ -181,7 +181,7 @@
 ;; Show column number in status bar
 (setq column-number-mode t)
 
-(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+(setq yas-snippet-dirs '("~/.emacs.d/snippets" "~/yasnippets"))
 
 ;; Coding Style
 (setq c-default-style "linux" c-basic-offset 4)
