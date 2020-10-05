@@ -4,7 +4,7 @@
 (setq package-archives
       '(("gnu" . "http://elpa.emacs-china.org/gnu/")
 	("melpa" . "http://elpa.emacs-china.org/melpa-stable/")))
-
+(package-initialize)
 
 (condition-case nil
     (require 'use-package)
