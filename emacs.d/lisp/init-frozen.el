@@ -25,7 +25,12 @@
   (setq yas-snippet-dirs '("~/yasnippets" "~/.emacs.d/snippets")))
 
 (use-package lsp-mode :hook ((lsp-mode . lsp-enable-which-key-integration))
-  :config (setq lsp-completion-enable-additional-text-edit nil))
+  :init
+  (custom-set-variables
+   '(lsp-keymap-prefix "C-c l"))
+  :config
+  (setq lsp-completion-enable-additional-text-edit nil))
+
 (use-package hydra)
 
 (use-package company
