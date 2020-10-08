@@ -29,7 +29,8 @@
   (custom-set-variables
    '(lsp-keymap-prefix "C-c l"))
   :config
-  (setq lsp-completion-enable-additional-text-edit nil))
+  (setq lsp-completion-enable-additional-text-edit nil)
+  (global-set-key (kbd "M-RET") 'lsp-execute-code-action))
 
 (use-package hydra)
 
