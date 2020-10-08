@@ -41,7 +41,17 @@
 (use-package lsp-ui)
 (use-package which-key :config (which-key-mode))
 (use-package lsp-java :config (add-hook 'java-mode-hook 'lsp))
-(use-package dap-mode :after lsp-mode :config (dap-auto-configure-mode))
+(use-package dap-mode
+  :after lsp-mode
+  :config
+  (dap-auto-configure-mode)
+  :custom
+  (dap-java-test-runner
+   "~/.emacs.d/.cache/lsp/eclipse.jdt.ls/test-runner/junit-platform-console-standalone.jar")
+  :bind
+  (("C-c r m" . dap-java-run-test-method)
+   ("C-c r c" . dap-java-run-test-class)))
+
 (use-package dap-java :ensure nil)
 (use-package helm-lsp)
 (use-package helm
