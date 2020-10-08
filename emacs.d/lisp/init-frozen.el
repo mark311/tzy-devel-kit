@@ -1,7 +1,7 @@
 (require 'package)
 (setq package-archives
       '(("gnu" . "http://elpa.emacs-china.org/gnu/")
-	("melpa" . "http://elpa.emacs-china.org/melpa-stable/")))
+	("melpa" . "http://elpa.emacs-china.org/melpa/")))
 (package-initialize)
 
 (setq use-package-always-ensure t)	; install package if not exists
