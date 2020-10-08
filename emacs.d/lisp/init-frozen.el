@@ -22,7 +22,7 @@
 (use-package yasnippet
   :config
   (yas-global-mode)
-  (setq yas-snippet-dirs '("~/.emacs.d/snippets" "~/yasnippets")))
+  (setq yas-snippet-dirs '("~/yasnippets" "~/.emacs.d/snippets")))
 
 (use-package lsp-mode :hook ((lsp-mode . lsp-enable-which-key-integration))
   :config (setq lsp-completion-enable-additional-text-edit nil))

@@ -10,7 +10,6 @@ emacs.d/elpa
 emacs.d/eshell
 semanticdb/
 abbrev_defs
-emacs.d/init.el
 emacs.d/url
 emacs.d.2/init.el
 emacs.d.2/ede-projects.el
