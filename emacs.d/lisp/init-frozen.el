@@ -53,7 +53,9 @@
    ("C-c r c" . dap-java-run-test-class)))
 
 (use-package dap-java :ensure nil)
-(use-package helm-lsp)
+(use-package helm-lsp
+  :bind
+  (("C-x C-d" . helm-lsp-workspace-symbol)))
 (use-package helm
   :config (helm-mode))
 (use-package lsp-treemacs)
