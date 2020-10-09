@@ -57,10 +57,30 @@
 (use-package helm-lsp
   :bind
   (("C-x C-d" . helm-lsp-workspace-symbol)))
+
 (use-package helm
-  :config (helm-mode))
+  :config
+  (helm-mode)
+  ;;
+  ;; Use helm-mode and ido-mode
+  ;;
+  ;; To use Ido for some commands and Helm for others, do not enable
+  ;; ido-mode. Instead, customize helm-completing-read-handlers-alist
+  ;; to specify which command uses Ido.
+  ;;
+  ;; see [https://github.com/emacs-helm/helm/wiki#use-helm-mode-and-ido-mode]
+  ;;
+  (setf (alist-get 'find-file helm-completing-read-handlers-alist) 'ido)
+  (setf (alist-get 'switch-to-buffer helm-completing-read-handlers-alist) 'ido)
+  :bind
+  (("C-x C-f" . helm-find-files)
+   ("C-x C-b" . helm-buffers-list)
+   ("C-x f" . find-file)		; will use ido-find-file
+   ("C-x b" . switch-to-buffer)		; will use ido-switch-buffer
+   ("M-s o" . helm-occur)
+   ("M-s O" . occur)))
+
 (use-package lsp-treemacs)
-(use-package ido :config (ido-mode))
 
 (use-package magit
   :config
@@ -132,15 +152,6 @@
     (global-unset-key (kbd "C-x C-c"))
 
     (global-set-key (kbd "C-x C-o") 'other-window)
-
-    ;; find file and switch buffer
-    (global-set-key (kbd "C-x C-f") 'helm-find-files)
-    (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
-    (global-set-key (kbd "C-x f") 'ido-find-file)
-    (global-set-key (kbd "C-x b") 'ido-switch-buffer)
-
-    (global-set-key (kbd "M-s o") 'helm-occur)
-    (global-set-key (kbd "M-s O") 'occur)
 
     (global-set-key (kbd "M-s s") 'isearch-forward-symbol-at-point)
     (global-set-key (kbd "M-s M-s") 'isearch-forward-symbol-at-point)
