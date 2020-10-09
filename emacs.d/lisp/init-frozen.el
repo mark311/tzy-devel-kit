@@ -22,7 +22,8 @@
 (use-package yasnippet
   :config
   (yas-global-mode)
-  (setq yas-snippet-dirs '("~/yasnippets" "~/.emacs.d/snippets")))
+  (setq yas-snippet-dirs '("~/yasnippets" "~/.emacs.d/snippets"))
+  (yas-reload-all))
 
 (use-package lsp-mode :hook ((lsp-mode . lsp-enable-which-key-integration))
   :init
