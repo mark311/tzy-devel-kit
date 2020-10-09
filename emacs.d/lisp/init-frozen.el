@@ -62,7 +62,7 @@
 (use-package magit
   :config
   (global-set-key (kbd "C-c g") 'magit-dispatch-popup)
-  (global-set-key (kbd "C-c G") 'magit-status))
+  (global-set-key (kbd "C-x g") 'magit-status))
 
 ;; usage:
 ;;   M-x markdown-preview-mode
