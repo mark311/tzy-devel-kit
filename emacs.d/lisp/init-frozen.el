@@ -25,13 +25,16 @@
   (setq yas-snippet-dirs '("~/yasnippets" "~/.emacs.d/snippets"))
   (yas-reload-all))
 
-(use-package lsp-mode :hook ((lsp-mode . lsp-enable-which-key-integration))
-  :init
-  (custom-set-variables
-   '(lsp-keymap-prefix "C-c l"))
-  :config
-  (setq lsp-completion-enable-additional-text-edit nil)
-  (global-set-key (kbd "M-RET") 'lsp-execute-code-action))
+(use-package lsp-mode
+  :hook
+  ((lsp-mode . lsp-enable-which-key-integration))
+  :custom
+  (lsp-keymap-prefix "C-c l")
+  ;; don't format code automatically when I'm typing
+  (lsp-enable-on-type-formatting nil)
+  (lsp-completion-enable-additional-text-edit nil)
+  :bind
+  (("M-RET". lsp-execute-code-action)))
 
 (use-package hydra)
 
