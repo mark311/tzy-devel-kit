@@ -51,7 +51,11 @@
    "~/.emacs.d/.cache/lsp/eclipse.jdt.ls/test-runner/junit-platform-console-standalone.jar")
   :bind
   (("C-c r m" . dap-java-run-test-method)
-   ("C-c r c" . dap-java-run-test-class)))
+   ("C-c r M" . dap-java-debug-test-method)
+   ("C-c r c" . dap-java-run-test-class)
+   ("C-c r C" . dap-java-debug-test-class)
+   ("C-c r b" . dap-breakpoint-add)
+   ("C-c r B" . dap-breakpoint-delete)))
 
 (use-package dap-java :ensure nil)
 (use-package helm-lsp
