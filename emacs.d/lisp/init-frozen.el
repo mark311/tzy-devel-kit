@@ -114,6 +114,7 @@
    ))
 
 (require 'my-utils)
+(require 'my-styles)
 (require 'rsync-compile)
 (require 'ansi-color)
 
@@ -218,6 +219,8 @@
   ;; ------------------------------
   ;; Coding Style
   ;; ------------------------------
+  (c-add-style "my-java" my/java-style-description)
+
   (add-hook 'c++-mode-hook (lambda ()
                              (setq c-default-style "linux"
                                    c-basic-offset 4
@@ -229,8 +232,8 @@
                                  indent-tabs-mode nil)))
 
   (add-hook 'java-mode-hook (lambda ()
-                              (setq c-basic-offset 4
-                                    indent-tabs-mode nil)))
+			      (c-set-style "my-java")
+                              (setq indent-tabs-mode nil)))
 
   ;; ------------------------------
   ;; Compilation
