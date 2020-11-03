@@ -113,6 +113,9 @@
    '(markdown-command "~/.emacs.d/misc/Markdown_1.0.1/Markdown.pl")
    ))
 
+(use-package cmake-mode)
+(use-package yaml-mode)
+
 (require 'my-utils)
 (require 'my-styles)
 (require 'rsync-compile)
