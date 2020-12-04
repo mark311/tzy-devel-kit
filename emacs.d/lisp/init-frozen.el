@@ -178,6 +178,16 @@
     nil)
 
   ;; ------------------------------
+  ;; Navigation
+  ;; ------------------------------
+  (progn
+    (custom-set-variables
+     ;; ido find file 在找不到文件的时候会进入 auto merge mode，置该变
+     ;; 量为 -1 来关闭这个行为。
+     '(ido-auto-merge-work-directories-length -1))
+    )
+
+  ;; ------------------------------
   ;; Common UI
   ;; ------------------------------
   (progn
