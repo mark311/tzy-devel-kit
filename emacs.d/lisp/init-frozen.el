@@ -213,6 +213,10 @@
      ;; 高亮显示行尾空格字符
      '(show-trailing-whitespace t))
 
+    ;; Font size
+    (add-to-list 'default-frame-alist '(font . "Menlo-13" ))
+    (set-face-attribute 'default t :font "Menlo-13" )
+
     )
 
   ;; ------------------------------
