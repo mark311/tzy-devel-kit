@@ -33,6 +33,10 @@
   ;; don't format code automatically when I'm typing
   (lsp-enable-on-type-formatting nil)
   (lsp-completion-enable-additional-text-edit nil)
+  :config
+  ;; the following 2 setq is refer to https://emacs-lsp.github.io/lsp-mode/page/performance/
+  (setq gc-cons-threshold 100000000)
+  (setq read-process-output-max (* 1024 1024)) ;; 1mb
   :bind
   (("M-RET". lsp-execute-code-action)))
 
