@@ -44,7 +44,9 @@
 
 (use-package company
   :config
-  (add-hook 'prog-mode-hook 'company-mode))
+  (add-hook 'prog-mode-hook 'company-mode)
+  :bind
+  (("C-M-/" . company-complete)))
 
 (use-package lsp-ui)
 (use-package which-key :config (which-key-mode))
