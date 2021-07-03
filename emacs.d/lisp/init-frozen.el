@@ -121,6 +121,7 @@
 
 (use-package cmake-mode)
 (use-package yaml-mode)
+(use-package go-mode)
 
 (require 'my-utils)
 (require 'my-styles)
